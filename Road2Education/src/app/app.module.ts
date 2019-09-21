@@ -5,10 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRippleModule, MatIconModule } from '@angular/material';
 import { AuthentificationModule } from './modules/authentification/authentification.module';
-import { LoginComponent } from './modules/authentification/login/login.component';
+
+import { AdminModule } from './modules/admin/admin.module';
+import { DriverModule } from './modules/driver/driver.module';
+import { StudentModule } from './modules/student/student.module';
+import { MainPageComponent } from './main-components/main-page/main-page.component';
+import { MainDashboardComponent } from './main-components/main-dashboard/main-dashboard.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MainPageComponent,
+    MainDashboardComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -17,9 +25,12 @@ import { LoginComponent } from './modules/authentification/login/login.component
     MatIconModule,
 
     // application modules
-    AuthentificationModule
+    AuthentificationModule,
+    AdminModule,
+    DriverModule,
+    StudentModule
   ],
   providers: [],
-  bootstrap: [LoginComponent]
+  bootstrap: [MainPageComponent]
 })
 export class AppModule { }
