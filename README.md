@@ -19,3 +19,9 @@ After cloning the repository do these following steps in order to run the projec
 3. Open the Visual Studio Code terminal
 4. Run `npm install` comand - only required once
 5. Run `npm start -o` to run the application
+
+## Other resources ##
+
+1. Angular Authentication: Using Route Guards https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3
+2. A Complete Guide To Routing In Angular https://www.smashingmagazine.com/2018/11/a-complete-guide-to-routing-in-angular/
+3. Angular Fire Repository https://github.com/angular/angularfire2 
