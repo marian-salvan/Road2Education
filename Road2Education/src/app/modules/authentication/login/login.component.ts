@@ -28,21 +28,23 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onLogin() {
+  async onLogin() {
     let user: BaseUser = 
     { 
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     };
 
-    this._authService.emailLogin(user).then(cred => {
-     this._userService.getByUid(cred.user.uid).then(user => {
-        this.routeToPage(user.type);
-      });
-    }).catch(error => {
-      console.log(error);
+    try {
+      let credentials = await this._authService.emailLogin(user);
 
-    });
+      this._userService.getUser(credentials.user.uid).subscribe(user => {
+        this.routeToPage(user.type);
+      }); 
+
+    } catch(error) {
+      console.log(error);
+    }
   }
 
   getEmailErrorMessage() : string {

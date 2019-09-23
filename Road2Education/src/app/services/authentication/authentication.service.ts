@@ -7,6 +7,8 @@ import { User } from 'src/app/models/users';
 import { BaseUser } from 'src/app/models/users';
 import { Observable, of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,9 @@ export class AuthenticationService {
 
   user: Observable<User>;
 
-  constructor(private _afAuth: AngularFireAuth, private _db: AngularFirestore) { 
+  constructor(private _afAuth: AngularFireAuth,
+              private _db: AngularFirestore,
+              private _userService: UserService) { 
     this.user = this._afAuth.authState.pipe( 
       switchMap(user => {
         if (user) {
@@ -41,14 +45,8 @@ export class AuthenticationService {
   public async emailRegister(user: User): Promise<firebase.auth.UserCredential> {
     try {
       let userCredential = await this._afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
-
-      await this._db.collection('users').doc(userCredential.user.uid).set({
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        phoneNumber: user.phoneNumber,
-        type: user.type
-      });
+      
+      await this._userService.addUser(userCredential.user.uid, user);
 
       return userCredential;
     } catch (error) {
