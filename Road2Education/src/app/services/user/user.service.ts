@@ -17,7 +17,6 @@ export class UserService {
 
   addUser(userId: string, user: User) : Promise<void> {
     let result = this._db.collection('users').doc(userId).set({
-      email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,

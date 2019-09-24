@@ -1,2 +1,16 @@
-<p>main-page works!</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>Road2Education</span>
+        <div class="test">
+            <a [routerLink]="['/login']">Login</a>
+        </div>
+        <div class="test">
+            <a [routerLink]="['/register']">Register</a>
+        </div>
+        <div class="test" *ngIf="getLoggedInUser() | async">
+            <span (click)="logOut()">Log out</span>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
 <router-outlet></router-outlet>

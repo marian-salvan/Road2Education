@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 
-import { MatRippleModule, MatIconModule } from '@angular/material';
+import { MatRippleModule, MatIconModule, MatToolbarModule, MatGridListModule } from '@angular/material';
 
 import { environment } from 'src/environments/environment';
 import { AdminModule } from './modules/admin/admin.module';
@@ -26,6 +26,8 @@ import { AuthenticationModule } from './modules/authentication/authentication.mo
     BrowserAnimationsModule,
     MatRippleModule,
     MatIconModule,
+    MatToolbarModule,
+    MatGridListModule,
     AngularFireModule.initializeApp(environment.firebase),
 
     // application modules
