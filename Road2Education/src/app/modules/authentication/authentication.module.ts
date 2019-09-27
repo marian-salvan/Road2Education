@@ -5,8 +5,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
-import { MatInputModule, MatFormFieldModule, MatCardModule, MatButtonModule } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule, MatFormFieldModule, MatCardModule, MatButtonModule, MatSelectModule } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { RegisterComponent } from './register/register.component';
 import { RoleAuthentificationGuard } from 'src/app/services/guards/role-authentification.guard';
@@ -19,11 +19,13 @@ import { UserService } from 'src/app/services/user/user.service';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
 
     MatFormFieldModule,
+    MatSelectModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule

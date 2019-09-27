@@ -8,6 +8,7 @@ import { REQUIRED_EMAIL, INVALID_EMAIL, REQUIRED_PASSWORD, INVALID_PASSWORD, REQ
   REQUIRED_LAST_NAME, REQUIRED_PHONE, INVALID_PHONE, INVALID_CONFIRM_PASSWORD } 
   from 'src/app/shared/constants/error-messages';
 import { mustMatch } from 'src/app/shared/custom-validators/password-match';
+import { Roles } from 'src/app/shared/constants/roles';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,8 @@ import { mustMatch } from 'src/app/shared/custom-validators/password-match';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
+  userTypes = [Roles.Admin, Roles.Driver, Roles.Student];
+  defaultUserType = Roles.Admin;
 
   constructor(private formBuilder: FormBuilder,
               private _authService: AuthenticationService, 
@@ -30,7 +33,8 @@ export class RegisterComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       phoneNumber: new FormControl('', [Validators.required, Validators.pattern(PHONE_REGEX)]),
       password: new FormControl('', [Validators.required, Validators.pattern(PASSWORD_REGEX)]),
-      confirmPassword: new FormControl('', [Validators.required])
+      confirmPassword: new FormControl('', [Validators.required]),
+      userType: new FormControl(Roles.Admin)
     }, {
       validator: mustMatch('password', 'confirmPassword')
     });

@@ -34,6 +34,13 @@
           <mat-error *ngIf="registerForm.controls['confirmPassword'].invalid">{{ getConfirmPasswordErrorMessage() }}</mat-error>
         </mat-form-field>
   
+        <mat-form-field class="form-field">
+            <mat-label class="label-space">You are?</mat-label>
+            <mat-select formControlName="userType">
+              <mat-option *ngFor="let type of userTypes" [value]="type">{{ type | titlecase }}</mat-option>   
+            </mat-select>
+        </mat-form-field>
+
         <button mat-raised-button color="primary" [disabled]="!registerForm.valid">Register</button>
       </form>
     </mat-card-content>
