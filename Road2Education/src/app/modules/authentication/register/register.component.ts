@@ -9,6 +9,7 @@ import { REQUIRED_EMAIL, INVALID_EMAIL, REQUIRED_PASSWORD, INVALID_PASSWORD, REQ
   from 'src/app/shared/constants/error-messages';
 import { mustMatch } from 'src/app/shared/custom-validators/password-match';
 import { Roles } from 'src/app/shared/constants/roles';
+import { User } from 'src/app/models/users';
 
 @Component({
   selector: 'app-register',
@@ -40,8 +41,24 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onRegister() {
+  async onRegister() {
+    try {
+      let user: User = 
+      { 
+        firstName: this.registerForm.value.firstName,
+        lastName: this.registerForm.value.lastName,
+        phoneNumber: this.registerForm.value.phoneNumber,
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password,
+        type: this.registerForm.value.userType
+      };
+      
+      await this._authService.emailRegister(user);
 
+      this._router.navigate(['/verify-email']);
+    } catch (error) {
+      console.log(error);  
+    }
   }
 
   getFirstNameErrorMessage(): string {
@@ -70,5 +87,22 @@ export class RegisterComponent implements OnInit {
   getConfirmPasswordErrorMessage(): string {
     return this.registerForm.controls['confirmPassword'].hasError('required') ? REQUIRED_PASSWORD :
            this.registerForm.controls['confirmPassword'].hasError('mustMatch') ? INVALID_CONFIRM_PASSWORD : '';
+  }
+
+  routeToAccount(type: string) {
+    switch (type) {
+      case Roles.Admin:
+        this._router.navigate(['/admin']);
+        break;
+      case Roles.Driver:
+        this._router.navigate(['/driver']);
+        break;
+      case Roles.Student:
+        this._router.navigate(['/student']);
+        break;      
+      default:
+        this._router.navigate(['']);
+        break;
+    }
   }
 }

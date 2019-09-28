@@ -29,19 +29,23 @@ export class LoginComponent implements OnInit {
   }
 
   async onLogin() {
-    let user: BaseUser = 
-    { 
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password,
-    };
-
     try {
+
+      let user: BaseUser = 
+      { 
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password,
+      };
+
       let credentials = await this._authService.emailLogin(user);
 
-      this._userService.getUser(credentials.user.uid).subscribe(user => {
-        this.routeToPage(user.type);
-      }); 
-
+      if (credentials !== null) {
+        this._userService.getUser(credentials.user.uid).subscribe(user => {
+          this.routeToAccount(user.type);
+        }); 
+      } else {
+        this._router.navigate(['/verify']);
+      }
     } catch(error) {
       console.log(error);
     }
@@ -57,7 +61,7 @@ export class LoginComponent implements OnInit {
            this.loginForm.controls['password'].hasError('pattern') ? INVALID_PASSWORD : '';
   }
 
-  routeToPage(type: string) {
+  routeToAccount(type: string) {
     switch (type) {
       case Roles.Admin:
         this._router.navigate(['/admin']);

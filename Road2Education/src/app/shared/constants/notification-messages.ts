@@ -1,0 +1,2 @@
+export const VERIFY_EMAIL: string = `Trebuie să vă verificați adresa de email pentru a putea continua.
+                                     După verificare puteți continua spre pagina de autentificare.`;

@@ -11,15 +11,21 @@ import { from } from 'rxjs';
 import { RegisterComponent } from './register/register.component';
 import { RoleAuthentificationGuard } from 'src/app/services/guards/role-authentification.guard';
 import { UserService } from 'src/app/services/user/user.service';
+import { RouterModule } from '@angular/router';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { VerifyComponent } from './verify/verify.component';
 
 @NgModule({
   declarations: [
     LoginComponent, 
-    RegisterComponent
+    RegisterComponent, 
+    VerifyComponent, 
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
     AngularFirestoreModule,

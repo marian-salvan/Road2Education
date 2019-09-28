@@ -7,11 +7,15 @@ import { DriverDashboardComponent } from 'src/app/modules/driver/driver-dashboar
 import { StudentDashboardComponent } from 'src/app/modules/student/student-dashboard/student-dashboard.component';
 import { LoginComponent } from 'src/app/modules/authentication/login/login.component';
 import { RegisterComponent } from 'src/app/modules/authentication/register/register.component';
+import { ResetPasswordComponent } from 'src/app/modules/authentication/reset-password/reset-password.component';
+import { VerifyComponent } from 'src/app/modules/authentication/verify/verify.component';
 
 export const ROUTES: Routes = [
   { path: '', component: MainDashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'verify', component: VerifyComponent },
+  { path: 'reset-password', component: ResetPasswordComponent}, 
   { 
     path: 'admin', 
     component: AdminDashboardComponent, 

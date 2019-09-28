@@ -35,22 +35,35 @@ export class AuthenticationService {
   public async emailLogin(user: BaseUser): Promise<firebase.auth.UserCredential> {
 
     try {
-      let userCredential = await this._afAuth.auth.signInWithEmailAndPassword(user.email, user.password);     
-      return userCredential;                                                            
+      let userCredential = await this._afAuth.auth.signInWithEmailAndPassword(user.email, user.password);   
+      if (userCredential.user.emailVerified === true) {
+        return userCredential;                                                            
+      }
+      
+      return null;
     } catch (error) {
-      throw error;
+      console.log(error);     
     }
   }
 
   public async emailRegister(user: User): Promise<firebase.auth.UserCredential> {
     try {
       let userCredential = await this._afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
-      
+   
+      await this._afAuth.auth.currentUser.sendEmailVerification();
       await this._userService.addUser(userCredential.user.uid, user);
 
       return userCredential;
     } catch (error) {
-      throw error;
+      console.log(error);     
+    }
+  }
+  
+  async sendPasswordResetEmail(email: string) {
+    try {
+      return await this._afAuth.auth.sendPasswordResetEmail(email);
+    } catch (error) {
+      console.log(error);     
     }
   }
 
@@ -58,7 +71,7 @@ export class AuthenticationService {
     try {
       return await this._afAuth.auth.signOut();
     } catch (error) {
-      throw error;
+      console.log(error);     
     }
   }
 }
