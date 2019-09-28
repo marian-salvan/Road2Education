@@ -1,0 +1,27 @@
+<p>driver-sign-up works!</p>
+<mat-card>
+    <mat-card-title>Formular inscriere</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="driverSignUpForm" (ngSumbit)="onSignUp()" class="sign-up-form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Prenume" type="text" formControlName="firstName"/>
+                <mat-error *ngIf="driverSignUpForm.controls['firstName'].invalid">Text eroare prenume</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Nume" type="text" formControlName="lastName"/>
+                <mat-error *ngIf="driverSignUpForm.controls['lastName'].invalid">Text eroare nume</mat-error>
+            </mat-form-field>
+
+            <button class="form-field" type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+            <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+            
+            <button class="form-field custom-button" type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+            <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+    
+            <input multiple type="image" formControlName="selfPicture"/>
+
+            <mat-checkbox class="form-field" formControlName="gdprApprove">Accepta gdpr</mat-checkbox>
+        </form>
+    </mat-card-content>
+</mat-card>
