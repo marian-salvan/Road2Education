@@ -1,0 +1,6 @@
+.custom-button {
+    border-radius: 30px;
+    background: rgba(130,48,249,1);
+    color:white;
+    box-shadow: -2px 5px 10px rgba(130,48,249,0.5);
+}
