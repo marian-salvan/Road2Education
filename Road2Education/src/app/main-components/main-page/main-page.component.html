@@ -1,13 +1,36 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="md-medium-tall">
     <mat-toolbar-row>
-        <span>Road2Education</span>
-        <div class="test">
-            <a [routerLink]="['/login']">Login</a>
+        <div class="title"> 
+            <img class="logo" src="assets/images/logo_100.png">
+            <span>Road2Education</span>
         </div>
-        <div class="test">
-            <a [routerLink]="['/register']">Register</a>
+
+        <span class="spacer"></span>
+
+        <div class="menu-spacer">
+            <span> Cine suntem? </span>
         </div>
-        <div class="test" *ngIf="getLoggedInUser() | async">
+
+        <div class="menu-spacer">
+            <span> Ce facem? </span>
+        </div>
+        
+        <div class="menu-spacer">
+            <span> Cum funcționează? </span>
+        </div>
+
+        <div class="menu-spacer">
+            <span> Contact? </span>
+        </div>
+
+        <div class="menu-spacer">
+            <a [routerLink]="['/login']">Intră în cont</a>
+        </div>
+        <div class="menu-spacer">
+            <a [routerLink]="['/register']">Crează Cont</a>
+        </div>
+
+        <div class="menu-spacer" *ngIf="getLoggedInUser() | async">
             <span (click)="logOut()">Log out</span>
         </div>
     </mat-toolbar-row>
