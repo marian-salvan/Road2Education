@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 
-import { MatRippleModule, MatIconModule, MatToolbarModule, MatGridListModule } from '@angular/material';
+import { MatRippleModule, MatIconModule, MatToolbarModule, MatGridListModule, MatIconRegistry, MatListModule } from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { environment } from 'src/environments/environment';
 import { AdminModule } from './modules/admin/admin.module';
@@ -28,6 +29,8 @@ import { AuthenticationModule } from './modules/authentication/authentication.mo
     MatIconModule,
     MatToolbarModule,
     MatGridListModule,
+    MatTabsModule,
+    MatListModule,
     AngularFireModule.initializeApp(environment.firebase),
 
     // application modules

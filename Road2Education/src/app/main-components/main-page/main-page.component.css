@@ -1,3 +1,19 @@
-.test {
+.menu-spacer {
     padding-left: 30px;
+    flex: auto;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 9%;
+    height: auto;
+    float: left;
 }
