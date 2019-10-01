@@ -2,26 +2,23 @@
 <mat-card>
     <mat-card-title>Formular inscriere</mat-card-title>
     <mat-card-content>
-        <form [formGroup]="driverSignUpForm" (ngSumbit)="onSignUp()" class="sign-up-form">
-            <mat-form-field class="form-field">
-                <input matInput placeholder="Prenume" type="text" formControlName="firstName"/>
-                <mat-error *ngIf="driverSignUpForm.controls['firstName'].invalid">Text eroare prenume</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="form-field">
-                <input matInput placeholder="Nume" type="text" formControlName="lastName"/>
-                <mat-error *ngIf="driverSignUpForm.controls['lastName'].invalid">Text eroare nume</mat-error>
-            </mat-form-field>
-
-            <button class="form-field" type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
-            <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+        <form [formGroup]="driverValidationForm" (ngSubmit)="onSubmitValidation()" class="sign-up-form">
             
-            <button class="form-field custom-button" type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
-            <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
-    
-            <input multiple type="image" formControlName="selfPicture"/>
-
+            <app-image-selector-field #drivingLicense 
+                class="form-field"
+                buttonText="Upload driving license" 
+                formControlName="drivingLicense">
+            </app-image-selector-field>
+            
+            <app-image-selector-field #driverPhoto 
+                class="form-field" 
+                buttonText="Upload your photo"
+                formControlName="driverPhoto">
+            </app-image-selector-field>
+            
             <mat-checkbox class="form-field" formControlName="gdprApprove">Accepta gdpr</mat-checkbox>
+
+            <button mat-raised-button color="primary" [disabled]="!driverValidationForm.valid">Finalizare</button>
         </form>
     </mat-card-content>
 </mat-card>

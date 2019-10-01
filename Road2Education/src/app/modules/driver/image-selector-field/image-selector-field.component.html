@@ -1,0 +1,6 @@
+<div class="image-container">
+    <img *ngIf="imgURI" [src]="imgURI" #imageView class="image-contained"/>
+</div>
+
+<button class="custom-button" type="button" mat-raised-button (click)="imageInput.click()">{{buttonText}}</button>
+<input hidden (change)="onImageSelected($event)" #imageInput type="file" accept="image/x-png,image/jpeg"/>
