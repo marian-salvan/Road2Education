@@ -20,3 +20,21 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.form-card {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%; 
+
+  /*center div*/
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.form-field {
+  margin-bottom: 20px;
+  width: 100%;
+  display: block;
+}

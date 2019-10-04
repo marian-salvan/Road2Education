@@ -9,13 +9,17 @@ import { LoginComponent } from 'src/app/modules/authentication/login/login.compo
 import { RegisterComponent } from 'src/app/modules/authentication/register/register.component';
 import { ResetPasswordComponent } from 'src/app/modules/authentication/reset-password/reset-password.component';
 import { VerifyComponent } from 'src/app/modules/authentication/verify/verify.component';
+import { OfferCreatorComponent } from 'src/app/modules/driver/offer-creator/offer-creator.component';
+import { OffersViewerComponent } from 'src/app/modules/driver/offers-viewer/offers-viewer.component';
 
 export const ROUTES: Routes = [
   { path: '', component: MainDashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'verify', component: VerifyComponent },
-  { path: 'reset-password', component: ResetPasswordComponent}, 
+  { path: 'reset-password', component: ResetPasswordComponent},
+  { path: 'driver/offers', component: OffersViewerComponent },
+  { path: 'driver/offers/new', component: OfferCreatorComponent },
   { 
     path: 'admin', 
     component: AdminDashboardComponent, 
@@ -26,11 +30,11 @@ export const ROUTES: Routes = [
   },
   { 
     path: 'driver', 
-    component: DriverDashboardComponent, 
-    canActivate: [RoleAuthentificationGuard], 
+    component: DriverDashboardComponent,
+    canActivate: [RoleAuthentificationGuard],
     data: { 
       expectedRole: Roles.Driver
-    } 
+    }
   },
   { 
     path: 'student', 
