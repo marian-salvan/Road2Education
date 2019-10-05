@@ -1,19 +1,39 @@
-.menu-spacer {
-    padding-left: 30px;
-    flex: auto;
+.logo {
+    width: 5%;
+    display: inline-block;
 }
 
-.spacer {
-    flex: 1 1 auto;
+.logo-footer {
+    width: 20%;
 }
 
-.title {
+.contact-details {
+    background-image: url('/../../assets/images/home_BG_2.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 440px;
+    color: white;
+}
+
+.col-centered {
     display: flex;
     align-items: center;
+  }
+
+.contact-details a {
+    color: white;
+    text-decoration: underline;
 }
 
-.logo {
-    width: 9%;
-    height: auto;
-    float: left;
+.contact-details li {
+    margin-bottom: 5px;
+}
+
+.media-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.custom-link {
+    text-decoration: underline;
 }

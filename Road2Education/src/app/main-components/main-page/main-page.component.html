@@ -1,39 +1,102 @@
-<mat-toolbar class="md-medium-tall">
+<div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" [routerLink]="['']">
+                <img class="logo" src="assets/images/logo_100.png">
+                <span>{{ title }}</span>
+            </a>
+            
+            <div class="container-fluid">          
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse row" id="navbarNav">
+                    <div class="col-lg-8">
+                        <ul class="navbar-nav">
+                            <li class="nav-item" >
+                                <a class="nav-link" [routerLink]="['']">Cine suntem?</a>
+                            </li>
+                            <li class="nav-item" >
+                                <a class="nav-link" href="#">Ce facem?</a>
+                            </li>
+                            <li class="nav-item" >
+                                <a class="nav-link" href="#">Cum funcționează?</a>
+                            </li>
+                            <li class="nav-item" >
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                   
+                    <div class="col-lg-4">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link custom-link" [routerLink]="['/login']">Intră în cont</a>
+                            </li>
+                            <li class="nav-item">
+                                <button class="full-button btn btn-primary" (click)="redirectToRegister()">Crează Cont</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>          
+           </div>  
+        </nav>
+</div>
+
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+
+    <div class="contact-details row align-items-center">
+        <div class="col-4 text-center center-block">
+            <ul class="list-unstyled">
+                <li>
+                    <a [routerLink]="['']">Termeni și condiții</a>
+                </li>
+                <li>
+                    <a [routerLink]="['']">Protecția datelor</a>
+                </li>
+                <li>
+                    <a [routerLink]="['']">ANPC</a>
+                </li>
+            </ul>       
+        </div>
+        <div class="col-4 text-center center-block">
+            <ul class="list-unstyled">
+                <li>
+                    <img class="logo-footer" src="assets/images/logo_100.png">
+                </li>
+                <li>
+                    <span>{{ title }}</span> 
+                </li>
+                <li class="font-weight-light">
+                    <span> {{ currentYear }} &#169;	{{ title }} - All rights reserved</span>         
+                </li>
+            </ul>
+        </div>
+        <div class="col-4 text-center center-block">
+            <span>Ne poți găsi și aici: </span>
+            <ul class="list-unstyled">
+                <li class="media-link" (click)="redirectToFacebookPage()">
+                    <span> Facebook </span>
+                    <i class="fa fa-facebook"></i>
+                </li>
+                <li class="media-link" (click)="redirectToInstagramPage()">
+                    <span> Instagram </span>
+                    <i class="fa fa-instagram"></i>
+                </li>
+                <li class="media-link" (click)="redirectToYoutubePage()">
+                    <span> Youtube </span>
+                    <i class="fa fa-youtube"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+<!--<mat-toolbar class="md-medium-tall">
     <mat-toolbar-row>
-        <div class="title"> 
-            <img class="logo" src="assets/images/logo_100.png">
-            <span>Road2Education</span>
-        </div>
-
-        <span class="spacer"></span>
-
-        <div class="menu-spacer">
-            <span> Cine suntem? </span>
-        </div>
-
-        <div class="menu-spacer">
-            <span> Ce facem? </span>
-        </div>
-        
-        <div class="menu-spacer">
-            <span> Cum funcționează? </span>
-        </div>
-
-        <div class="menu-spacer">
-            <span> Contact? </span>
-        </div>
-
-        <div class="menu-spacer">
-            <a [routerLink]="['/login']">Intră în cont</a>
-        </div>
-        <div class="menu-spacer">
-            <a [routerLink]="['/register']">Crează Cont</a>
-        </div>
-
         <div class="menu-spacer" *ngIf="getLoggedInUser() | async">
             <span (click)="logOut()">Log out</span>
         </div>
     </mat-toolbar-row>
-</mat-toolbar>
+</mat-toolbar> -->
 
-<router-outlet></router-outlet>

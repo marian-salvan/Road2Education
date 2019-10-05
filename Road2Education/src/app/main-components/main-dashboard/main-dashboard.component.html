@@ -1,1 +1,38 @@
-<p>main-dashboard works!</p>
+<div class="row main-section align-items-center">
+    <div class="col-md-6">
+        <h1 class="mb-3"> {{ mainSectionTitle }} </h1>
+        <h4 class="mb-3"> {{ mainSectionSubtitle }} </h4>
+        <div class="text-center center-block">
+            <button class="full-button btn btn-primary mr-4" (click)="redirectToRegister()">Crează Cont</button>
+            <button class="transparent-button btn btn-primary mr-4" (click)="redirectToLogin()">Intră în Cont</button>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="embed-responsive embed-responsive-16by9">
+             <iframe class="embed-responsive-item" [src]="youtubeLink | safe" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center center-block">
+            <h1 class="d-inline colored-text"> De ce </h1> 
+            <h1 class="d-inline"> să te alături?</h1>        
+        </div>
+
+        <div class="text-center center-block">
+            <img class="arrow" src="assets/images/home_arrow.png">
+        </div>
+
+    </div>    
+</div>
+      
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center center-block">
+           <h6>{{description}}</h6> 
+        </div>
+    </div>
+</div>

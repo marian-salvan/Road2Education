@@ -38,3 +38,9 @@
   width: 100%;
   display: block;
 }
+
+.full-button {
+  background-color: var(--color-3);
+  border-radius: 20px;
+  color: white;
+}

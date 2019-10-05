@@ -1,4 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
+:root {
+    --color-1: #092442;
+    --color-2: #3D2F74;
+    --color-3: #8230F9;
+    --color-4: #9EF4F6;
+    --color-5: #B2FDFF;
+    --color-6: #C6FDFF;  
+}
+
+.full-button {
+    background-color: var(--color-3);
+    border-radius: 20px;
+    color: white;
+}
+
+.full-button:hover {
+  background-color: var(--color-2);
+}
+
+.full-button:disabled {
+  background-color: grey;
+  border-color: var(--color-3);
+}
+
+.transparent-button {
+  background-color: transparent;
+  border-radius: 20px;
+  border-color: var(--color-3);
+  color: var(--color-3);
+}
+
+.transparent-button:hover {
+  background-color: var(--color-2);
+    border-radius: 20px;
+    color: white;
+}
+
+
+.mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: var(--color-3) !important;
+}
+
+.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: var(--color-3) !important;
+}
+
+.form-title {
+  color: var(--color-3);
+}
+ 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
