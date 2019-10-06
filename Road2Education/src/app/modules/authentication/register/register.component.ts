@@ -45,6 +45,7 @@ export class RegisterComponent implements OnInit {
     try {
       let user: User = 
       { 
+        uid: '',
         firstName: this.registerForm.value.firstName,
         lastName: this.registerForm.value.lastName,
         phoneNumber: this.registerForm.value.phoneNumber,
@@ -55,7 +56,7 @@ export class RegisterComponent implements OnInit {
       
       await this._authService.emailRegister(user);
 
-      this._router.navigate(['/verify-email']);
+      this._router.navigate(['/verify']);
     } catch (error) {
       console.log(error);  
     }

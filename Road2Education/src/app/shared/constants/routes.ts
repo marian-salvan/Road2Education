@@ -18,8 +18,22 @@ export const ROUTES: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'verify', component: VerifyComponent },
   { path: 'reset-password', component: ResetPasswordComponent},
-  { path: 'driver/offers', component: OffersViewerComponent },
-  { path: 'driver/offers/new', component: OfferCreatorComponent },
+  { 
+    path: 'driver/offers', 
+    component: OffersViewerComponent,
+    canActivate: [RoleAuthentificationGuard],
+    data: {
+      expectedRole: Roles.Driver
+    } 
+  },
+  { 
+    path: 'driver/offers/new', 
+    component: OfferCreatorComponent,
+    canActivate: [RoleAuthentificationGuard],
+    data: {
+        expectedRole: Roles.Driver
+    }
+  },
   { 
     path: 'admin', 
     component: AdminDashboardComponent, 

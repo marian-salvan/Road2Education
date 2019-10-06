@@ -4,6 +4,7 @@ export interface BaseUser {
 }
 
 export interface User extends BaseUser {
+    uid: string;
     firstName: string;
     lastName: string;
     phoneNumber: string;

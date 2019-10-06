@@ -10,6 +10,6 @@ export class PersistenceService {
     constructor(private firestore: AngularFirestore) { }
 
     async post(collection: string, value: any) {
-        this.firestore.collection(collection).add(value);
+      await this.firestore.collection(collection).add(value);
     }
 }

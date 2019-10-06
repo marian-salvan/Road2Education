@@ -38,7 +38,6 @@
     color: white;
 }
 
-
 .mat-focused .mat-form-field-label {
   /*change color of label*/
   color: var(--color-3) !important;
@@ -47,6 +46,10 @@
 .mat-form-field-ripple {
  /*change color of underline when focused*/
  background-color: var(--color-3) !important;
+}
+
+.mat-checkbox-checked .mat-checkbox-background {
+  background-color: var(--color-3) !important;
 }
 
 .form-title {

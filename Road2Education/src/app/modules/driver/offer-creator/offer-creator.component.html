@@ -1,39 +1,44 @@
-<mat-card class="form-card">
-    <mat-card-title>Posteaza o noua cursa</mat-card-title>
-    <mat-card-content>
-        <form [formGroup]="rideOfferForm" (ngSubmit)="onOfferSubmission()" class="sign-up-form">
-            <app-places-autocomplete class="form-field" placeholder="From location" (locationChange)="onLocationSelected($event, 'fromLocation')"></app-places-autocomplete>
+<div class="row my-4">
 
-            <app-places-autocomplete class="form-field" placeholder="To location"  (locationChange)="onLocationSelected($event, 'toLocation')"></app-places-autocomplete>
+        <mat-card class="form-card">
+            <mat-card-title class="form-title">Postează o cursă nouă</mat-card-title>
+                <mat-card-content>
+                    <form [formGroup]="rideOfferForm" (ngSubmit)="onOfferSubmission()" class="sign-up-form">
+                        <app-places-autocomplete class="form-field" placeholder="De la" (locationChange)="onLocationSelected($event, 'fromLocation')"></app-places-autocomplete>
             
-            <mat-form-field class="form-field">
-                <input matInput [matDatepicker]="datepicker" placeholder="Choose a date" formControlName="routeDate">
-                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-                <mat-datepicker #datepicker></mat-datepicker>
-            </mat-form-field>
+                        <app-places-autocomplete class="form-field" placeholder="Până la"  (locationChange)="onLocationSelected($event, 'toLocation')"></app-places-autocomplete>
+                        
+                        <mat-form-field class="form-field">
+                            <input matInput [matDatepicker]="datepicker" placeholder="Alege data" formControlName="routeDate">
+                            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #datepicker></mat-datepicker>
+                        </mat-form-field>
+            
+                        <ngx-timepicker-field class="form-field" [defaultTime]="'7:00 am'" formControlName="routeTime"></ngx-timepicker-field>
+            
+                        <mat-checkbox class="form-field" formControlName="repeat">Repetă</mat-checkbox>
+            
+                        <section  [hidden]="!rideOfferForm.controls['repeat'].value">
+                            <mat-checkbox class="inline-checkbox" formControlName="selectMonday">Mon</mat-checkbox>
+                            <mat-checkbox class="inline-checkbox" formControlName="selectTuesday">Tue</mat-checkbox>
+                            <mat-checkbox class="inline-checkbox" formControlName="selectWednesday">Wed</mat-checkbox>
+                            <mat-checkbox class="inline-checkbox" formControlName="selectThursday">Thu</mat-checkbox>
+                            <mat-checkbox class="inline-checkbox" formControlName="selectFriday">Fri</mat-checkbox>
+                        </section>
+            
+                        <mat-form-field class="form-field">
+                            <input matInput type="number" formControlName="availableSeats" placeholder="Numărul de locuri"/>
+                        </mat-form-field>
+            
+                        <textarea matInput class="form-field" formControlName="details" placeholder="Details"></textarea>
+            
+                        <div class="text-center center-block">
+                                <button type="submit" class="full-button btn btn-primary" 
+                                        [disabled]="!rideOfferForm.valid || !fromLocation || !toLocation"> Finalizare</button>       
+                        </div>
+                    
+                    </form>
+                </mat-card-content>
+        </mat-card>
+</div>
 
-            <ngx-timepicker-field class="form-field" [defaultTime]="'7:00 am'" formControlName="routeTime"></ngx-timepicker-field>
-
-            <mat-checkbox class="form-field" formControlName="repeat">Repeat</mat-checkbox>
-
-            <section  [hidden]="!rideOfferForm.controls['repeat'].value">
-                <mat-checkbox class="inline-checkbox" formControlName="selectMonday">Mon</mat-checkbox>
-                <mat-checkbox class="inline-checkbox" formControlName="selectTuesday">Tue</mat-checkbox>
-                <mat-checkbox class="inline-checkbox" formControlName="selectWednesday">Wed</mat-checkbox>
-                <mat-checkbox class="inline-checkbox" formControlName="selectThursday">Thu</mat-checkbox>
-                <mat-checkbox class="inline-checkbox" formControlName="selectFriday">Fri</mat-checkbox>
-            </section>
-
-            <mat-form-field class="form-field">
-                <input matInput type="number" formControlName="availableSeats" placeholder="Number of seats"/>
-            </mat-form-field>
-
-            <textarea matInput class="form-field" formControlName="details" placeholder="Details"></textarea>
-
-            <button mat-raised-button color="primary" 
-                    [disabled]="!rideOfferForm.valid || !fromLocation || !toLocation">
-                    Finalizare
-            </button>
-        </form>
-    </mat-card-content>
-</mat-card>
