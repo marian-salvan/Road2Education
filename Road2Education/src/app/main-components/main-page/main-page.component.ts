@@ -44,6 +44,12 @@ export class MainPageComponent implements OnInit {
     this._router.navigate(['/register']);
   }
 
+  goToProfile() {
+    this._authService.user.subscribe(currentUser => {
+      this._router.navigate([`/${currentUser.type}`]);
+    });
+  }
+
   redirectToFacebookPage() {
     window.open(this.facebookLink, "_blank");
   }
