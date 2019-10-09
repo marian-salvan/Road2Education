@@ -51,7 +51,8 @@ export class RegisterComponent implements OnInit {
         phoneNumber: this.registerForm.value.phoneNumber,
         email: this.registerForm.value.email,
         password: this.registerForm.value.password,
-        type: this.registerForm.value.userType
+        type: this.registerForm.value.userType,
+        validated: false
       };
       
       await this._authService.emailRegister(user);

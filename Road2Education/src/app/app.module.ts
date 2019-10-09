@@ -17,12 +17,14 @@ import { MainDashboardComponent } from './main-components/main-dashboard/main-da
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { SafePipe } from './shared/pipes/safe.pipe';
+import { PendingAccountComponent } from './main-components/pending-account/pending-account.component';
 
 @NgModule({
   declarations: [
     MainPageComponent,
     MainDashboardComponent,
     SafePipe,
+    PendingAccountComponent,
   ],
   imports: [
     BrowserModule,

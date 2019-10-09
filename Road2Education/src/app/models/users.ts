@@ -9,4 +9,5 @@ export interface User extends BaseUser {
     lastName: string;
     phoneNumber: string;
     type: string;
+    validated: boolean;
 }

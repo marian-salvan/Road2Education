@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DriverValidationService } from 'src/app/services/validation/driver-validation.service';
 import { DriverValidationRequest} from 'src/app/models/validation-request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-driver-sign-up',
@@ -13,7 +14,8 @@ export class DriverSignUpComponent implements OnInit {
 
   driverValidationForm: FormGroup;
 
-  constructor(private driverValidationService: DriverValidationService) { }
+  constructor(private driverValidationService: DriverValidationService,
+              private router: Router) { }
 
   ngOnInit() {
     this.driverValidationForm = new FormGroup({
@@ -30,6 +32,7 @@ export class DriverSignUpComponent implements OnInit {
       user: null
     };
 
-    this.driverValidationService.registerRequest(req);
+    this.driverValidationService.registerRequest(req)
+        .then(s => this.router.navigate(['account/pending']));
   }
 }

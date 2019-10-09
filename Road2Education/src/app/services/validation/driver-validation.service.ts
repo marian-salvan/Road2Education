@@ -4,24 +4,30 @@ import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask 
 import { FileUploadService } from '../uploads/upload.service';
 import { DriverValidationRequest } from 'src/app/models/validation-request';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { AuthenticationService } from '../authentication/authentication.service';
+import { User } from 'src/app/models/users';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DriverValidationService {
 
-    constructor(private uploadService: FileUploadService,
+    constructor(private authService: AuthenticationService,
+                private uploadService: FileUploadService,
                 private firestore: AngularFirestore) { }
 
-    async registerRequest(request: DriverValidationRequest): Promise<DocumentReference> {
+    async registerRequest(request: DriverValidationRequest): Promise<Subscription> {
         const drivingLicenseId = await this.uploadService.upload(request.drivingLicense);
         const driverPhotoId = await this.uploadService.upload(request.driverPhoto);
 
-        return this.firestore.collection('validation-requests').add({
-            user_id: 'request.user.id', // TODO: replace
-            user_type: 'driver', // TODO: replace with constant from user
-            driverPhotoId,
-            drivingLicenseId,
+        return this.authService.user.subscribe((currentUser: User) => {
+            this.firestore.collection('validation-requests').add({
+                user_id: currentUser.uid,
+                user_type: currentUser.type,
+                driverPhotoId,
+                drivingLicenseId,
+            });
         });
     }
 }
