@@ -5,7 +5,6 @@ import { DriverSignUpComponent } from './driver-sign-up/driver-sign-up.component
 import { MatInputModule, MatFormFieldModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule,
   MatSelectModule, MatCheckboxModule, MatAutocompleteModule, MatTooltipModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ImageSelectorFieldComponent } from './image-selector-field/image-selector-field.component';
 import { FileUploadService } from 'src/app/services/uploads/upload.service';
 import { PersistenceService } from 'src/app/services/persistence/persistence.service';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -13,18 +12,16 @@ import { DriverValidationService } from 'src/app/services/validation/driver-vali
 import { OfferCreatorComponent } from './offer-creator/offer-creator.component';
 import { OffersViewerComponent } from './offers-viewer/offers-viewer.component';
 import { RouterModule } from '@angular/router';
-import { PlacesAutocompleteComponent } from './places-autocomplete/places-autocomplete.component';
 import { HttpClientModule } from '@angular/common/http';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { BaseComponentsModule } from 'src/app/modules/base-components/base-components.module';
 
 @NgModule({
   declarations: [
     DriverDashboardComponent,
     DriverSignUpComponent,
-    ImageSelectorFieldComponent,
     OfferCreatorComponent,
     OffersViewerComponent,
-    PlacesAutocompleteComponent
   ],
   imports: [
     RouterModule,
@@ -47,6 +44,8 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatAutocompleteModule,
     MatTooltipModule,
     NgxMaterialTimepickerModule,
+
+    BaseComponentsModule,
   ],
   exports: [
     DriverDashboardComponent,

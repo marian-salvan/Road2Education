@@ -64,3 +64,4 @@ export class ImageSelectorFieldComponent implements OnInit, ControlValueAccessor
   }
 
 }
+

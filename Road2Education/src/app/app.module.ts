@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 
-import { MatRippleModule, MatIconModule, MatToolbarModule, MatGridListModule, MatIconRegistry, MatListModule, MatButtonModule } from '@angular/material';
+import { MatRippleModule, MatIconModule, MatToolbarModule, MatGridListModule, MatListModule, MatButtonModule } from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
 
 import { environment } from 'src/environments/environment';
