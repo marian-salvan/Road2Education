@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
-import { DriverSignUpComponent } from './driver-sign-up/driver-sign-up.component';
+import { DriverValidationComponent } from './driver-validation/driver-validation.component';
 import { MatInputModule, MatFormFieldModule, MatCardModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule,
   MatSelectModule, MatCheckboxModule, MatAutocompleteModule, MatTooltipModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -19,7 +19,7 @@ import { BaseComponentsModule } from 'src/app/modules/base-components/base-compo
 @NgModule({
   declarations: [
     DriverDashboardComponent,
-    DriverSignUpComponent,
+    DriverValidationComponent,
     OfferCreatorComponent,
     OffersViewerComponent,
   ],

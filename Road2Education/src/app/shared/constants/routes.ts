@@ -12,9 +12,11 @@ import { ResetPasswordComponent } from 'src/app/modules/authentication/reset-pas
 import { VerifyComponent } from 'src/app/modules/authentication/verify/verify.component';
 import { OfferCreatorComponent } from 'src/app/modules/driver/offer-creator/offer-creator.component';
 import { OffersViewerComponent } from 'src/app/modules/driver/offers-viewer/offers-viewer.component';
-import { DriverSignUpComponent } from 'src/app/modules/driver/driver-sign-up/driver-sign-up.component';
+import { DriverValidationComponent } from 'src/app/modules/driver/driver-validation/driver-validation.component';
 import { PendingAccountComponent } from 'src/app/main-components/pending-account/pending-account.component';
 import { UserPendingValidationGuard, UserNoPendingValidationGuard } from 'src/app/services/guards/pending-validation.guard';
+import { StudentValidationComponent } from 'src/app/modules/student/student-validation/student-validation.component';
+import { RequestCreatorComponent } from 'src/app/modules/student/request-creator/request-creator.component';
 
 export const ROUTES: Routes = [
   { path: '', component: MainDashboardComponent },
@@ -30,7 +32,7 @@ export const ROUTES: Routes = [
   },
   {
     path: 'driver/validate',
-    component: DriverSignUpComponent,
+    component: DriverValidationComponent,
     canActivate: [RoleAuthentificationGuard, UserNoPendingValidationGuard],
     data: {
       expectedRole: Roles.Driver
@@ -62,7 +64,7 @@ export const ROUTES: Routes = [
         expectedRole: Roles.Admin
     }
   },
-  { 
+  {
     path: 'driver', 
     component: DriverDashboardComponent,
     canActivate: [RoleAuthentificationGuard, UserValidatedGuard],
@@ -71,13 +73,31 @@ export const ROUTES: Routes = [
       validationPath: 'driver/validate'
     }
   },
-  { 
-    path: 'student', 
-    component: StudentDashboardComponent, 
-    canActivate: [RoleAuthentificationGuard], 
-    data: { 
+  {
+    path: 'student',
+    component: StudentDashboardComponent,
+    canActivate: [RoleAuthentificationGuard, UserValidatedGuard],
+    data: {
+      expectedRole: Roles.Student,
+      validationPath: 'student/validate'
+    }
+  },
+  {
+    path: 'student/validate',
+    component: StudentValidationComponent,
+    canActivate: [RoleAuthentificationGuard, UserNoPendingValidationGuard],
+    data: {
       expectedRole: Roles.Student
-    } 
+    }
+  },
+  {
+    path: 'student/requests/new',
+    component: RequestCreatorComponent,
+    canActivate: [RoleAuthentificationGuard, UserValidatedGuard],
+    data: {
+        expectedRole: Roles.Student,
+        validationPath: 'student/validate'
+    }
   },
   { path: '**', redirectTo: '' }
 ];

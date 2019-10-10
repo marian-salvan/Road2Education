@@ -5,12 +5,12 @@ import { DriverValidationRequest} from 'src/app/models/validation-request';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-driver-sign-up',
-  templateUrl: './driver-sign-up.component.html',
-  styleUrls: ['./driver-sign-up.component.css',
+  selector: 'app-driver-validation',
+  templateUrl: './driver-validation.component.html',
+  styleUrls: ['./driver-validation.component.css',
       '../../../shared/styles/commons.css']
 })
-export class DriverSignUpComponent implements OnInit {
+export class DriverValidationComponent implements OnInit {
 
   driverValidationForm: FormGroup;
 
