@@ -1,1 +1,25 @@
-<p>student-validation works!</p>
+<mat-card class="form-card">
+    <mat-card-title>Formular validare</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="studentValidationForm" (ngSubmit)="onSubmitValidation()" class="sign-up-form">
+            
+            <mat-form-field class="form-field" [color]="green">
+                <input matInput placeholder="School" type="text" formControlName="schoolName"/>
+                <mat-error *ngIf="studentValidationForm.controls['schoolName'].invalid">Required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field" [color]="green">
+                <input matInput placeholder="Class" type="text" formControlName="className"/>
+                <mat-error *ngIf="studentValidationForm.controls['className'].invalid">Required</mat-error>
+            </mat-form-field>
+
+            <app-image-selector-field #gradebook 
+                class="form-field"
+                buttonText="Upload gradebook" 
+                formControlName="gradebook">
+            </app-image-selector-field>
+            
+            <button mat-raised-button color="primary" [disabled]="!studentValidationForm.valid">Finalizare</button>
+        </form>
+    </mat-card-content>
+</mat-card>

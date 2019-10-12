@@ -12,5 +12,5 @@ export interface DriverValidationRequest extends BaseValidationRequest {
 export interface StudentValidationRequest extends BaseValidationRequest {
     school: string;
     class: string;
-    schoolDocumentPhoto: File;
+    gradebook: File;
 }

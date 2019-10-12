@@ -1,0 +1,13 @@
+.inline-checkbox {
+    margin-right: 10px;
+}
+
+.full-button:disabled {
+    background-color: grey;
+    border-color: var(--color-3);
+}
+
+.full-button:hover {
+    background-color: var(--color-2);
+}
+  

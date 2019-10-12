@@ -17,13 +17,13 @@ export class StudentValidationService {
                 private firestore: AngularFirestore) { }
 
     async registerRequest(request: StudentValidationRequest): Promise<Subscription> {
-        const schoolDocumentId = await this.uploadService.upload(request.schoolDocumentPhoto);
+        const gradebookId = await this.uploadService.upload(request.gradebook);
 
         return this.authService.user.subscribe((currentUser: User) => {
             this.firestore.collection('validation-requests').add({
                 user_id: currentUser.uid,
                 user_type: currentUser.type,
-                schoolDocumentId,
+                gradebookId,
                 school: request.school,
                 class: request.class
             });

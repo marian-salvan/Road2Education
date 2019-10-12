@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
 import { PersistenceService } from 'src/app/services/persistence/persistence.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
@@ -24,7 +23,7 @@ export class OfferCreatorComponent implements OnInit {
   ngOnInit() {
     this.rideOfferForm = new FormGroup({
       routeDate: new FormControl(),
-      routeTime: new FormControl(),
+      routeTime: new FormControl('7:00 am'),
       repeat: new FormControl(),
       selectMonday: new FormControl(),
       selectTuesday: new FormControl(),
@@ -62,7 +61,7 @@ export class OfferCreatorComponent implements OnInit {
         numberOfSeats: this.rideOfferForm.controls.availableSeats.value,
         details: this.rideOfferForm.controls.details.value,
       };
-  
+
       this.persistenceService.post('route-offers', offer);
     });
   }

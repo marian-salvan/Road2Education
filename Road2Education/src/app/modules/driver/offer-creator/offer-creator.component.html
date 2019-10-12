@@ -14,7 +14,7 @@
                             <mat-datepicker #datepicker></mat-datepicker>
                         </mat-form-field>
             
-                        <ngx-timepicker-field class="form-field" [defaultTime]="'7:00 am'" formControlName="routeTime"></ngx-timepicker-field>
+                        <ngx-timepicker-field class="form-field" formControlName="routeTime"></ngx-timepicker-field>
             
                         <mat-checkbox class="form-field" formControlName="repeat">Repetă</mat-checkbox>
             
@@ -30,7 +30,10 @@
                             <input matInput type="number" formControlName="availableSeats" placeholder="Numărul de locuri"/>
                         </mat-form-field>
             
-                        <textarea matInput class="form-field" formControlName="details" placeholder="Details"></textarea>
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Details</mat-label>
+                            <textarea matInput matTextareaAutosize matAutosizeMinRows=3 matAutosizeMaxRows=8 formControlName="details"></textarea>
+                        </mat-form-field>
             
                         <div class="text-center center-block">
                                 <button type="submit" class="full-button btn btn-primary" 
