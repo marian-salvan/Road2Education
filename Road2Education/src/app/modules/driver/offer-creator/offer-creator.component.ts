@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/cor
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PersistenceService } from 'src/app/services/persistence/persistence.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { RouteOffer } from 'src/app/models/route';
 
 @Component({
   selector: 'app-offer-creator',
@@ -25,11 +26,11 @@ export class OfferCreatorComponent implements OnInit {
       routeDate: new FormControl(),
       routeTime: new FormControl('7:00 am'),
       repeat: new FormControl(),
-      selectMonday: new FormControl(),
-      selectTuesday: new FormControl(),
-      selectWednesday: new FormControl(),
-      selectThursday: new FormControl(),
-      selectFriday: new FormControl(),
+      selectMonday: new FormControl(false),
+      selectTuesday: new FormControl(false),
+      selectWednesday: new FormControl(false),
+      selectThursday: new FormControl(false),
+      selectFriday: new FormControl(false),
       availableSeats: new FormControl(),
       details: new FormControl()
     });
@@ -38,7 +39,7 @@ export class OfferCreatorComponent implements OnInit {
   onOfferSubmission() {
 
     this.authService.user.subscribe(currentUser => {
-      const offer = {
+      const offer: RouteOffer = {
         driver: currentUser.uid,
         from: {
           description: this.fromLocation.description,
@@ -51,13 +52,28 @@ export class OfferCreatorComponent implements OnInit {
         routeDate: this.rideOfferForm.controls.routeDate.value,
         routeTime: this.rideOfferForm.controls.routeTime.value,
         repeat: this.rideOfferForm.controls.repeat.value,
-        repeatDays: {
-          mon: this.rideOfferForm.controls.selectMonday.value,
-          tue: this.rideOfferForm.controls.selectTuesday.value,
-          wed: this.rideOfferForm.controls.selectWednesday.value,
-          thu: this.rideOfferForm.controls.selectThursday.value,
-          fri: this.rideOfferForm.controls.selectFriday.value,
-        },
+        repeatDays: [
+          {
+            day: 'mon',
+            repeating: this.rideOfferForm.controls.selectMonday.value
+          },
+          {
+            day: 'tue',
+            repeating: this.rideOfferForm.controls.selectTuesday.value
+          },
+          {
+            day: 'wed',
+            repeating: this.rideOfferForm.controls.selectWednesday.value
+          },
+          {
+            day: 'thu',
+            repeating: this.rideOfferForm.controls.selectThursday.value
+          },
+          {
+            day: 'fri',
+            repeating: this.rideOfferForm.controls.selectFriday.value
+          },
+        ],
         numberOfSeats: this.rideOfferForm.controls.availableSeats.value,
         details: this.rideOfferForm.controls.details.value,
       };

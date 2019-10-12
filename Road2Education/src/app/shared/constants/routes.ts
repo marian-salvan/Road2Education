@@ -17,6 +17,7 @@ import { PendingAccountComponent } from 'src/app/main-components/pending-account
 import { UserPendingValidationGuard, UserNoPendingValidationGuard } from 'src/app/services/guards/pending-validation.guard';
 import { StudentValidationComponent } from 'src/app/modules/student/student-validation/student-validation.component';
 import { RequestCreatorComponent } from 'src/app/modules/student/request-creator/request-creator.component';
+import { OffersListComponent } from 'src/app/modules/base-components/offers-list/offers-list.component';
 
 export const ROUTES: Routes = [
   { path: '', component: MainDashboardComponent },
@@ -25,6 +26,7 @@ export const ROUTES: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'verify', component: VerifyComponent },
   { path: 'reset-password', component: ResetPasswordComponent},
+  { path: 'offers', component: OffersListComponent},
   {
     path: 'account/pending',
     component: PendingAccountComponent,

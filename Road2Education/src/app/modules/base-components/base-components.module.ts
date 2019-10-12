@@ -5,11 +5,17 @@ import { PlacesAutocompleteComponent } from './places-autocomplete/places-autoco
 import { MatTooltipModule, MatInputModule, MatFormFieldModule, MatAutocompleteModule, 
   MatSelectModule, MatOptionModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { OfferViewComponent } from './offer-view/offer-view.component';
+import { RequestViewComponent } from './request-view/request-view.component';
+import { OffersListComponent } from './offers-list/offers-list.component';
 
 @NgModule({
   declarations: [
     ImageSelectorFieldComponent,
-    PlacesAutocompleteComponent
+    PlacesAutocompleteComponent,
+    OfferViewComponent,
+    RequestViewComponent,
+    OffersListComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +32,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ],
   exports: [
     ImageSelectorFieldComponent,
-    PlacesAutocompleteComponent
+    PlacesAutocompleteComponent,
+    OfferViewComponent,
+    RequestViewComponent
   ]
 })
 export class BaseComponentsModule { }

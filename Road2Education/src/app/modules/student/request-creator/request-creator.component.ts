@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/cor
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PersistenceService } from 'src/app/services/persistence/persistence.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { RouteRequest } from 'src/app/models/route';
 
 @Component({
   selector: 'app-request-creator',
@@ -24,11 +25,11 @@ export class RequestCreatorComponent implements OnInit {
     this.rideRequestForm = new FormGroup({
       routeTime: new FormControl('7:00 am'),
       repeat: new FormControl(),
-      selectMonday: new FormControl(),
-      selectTuesday: new FormControl(),
-      selectWednesday: new FormControl(),
-      selectThursday: new FormControl(),
-      selectFriday: new FormControl(),
+      selectMonday: new FormControl(false),
+      selectTuesday: new FormControl(false),
+      selectWednesday: new FormControl(false),
+      selectThursday: new FormControl(false),
+      selectFriday: new FormControl(false),
       availableSeats: new FormControl(),
       returnRide: new FormControl(),
       returnTime: new FormControl('1:00 pm'),
@@ -39,7 +40,7 @@ export class RequestCreatorComponent implements OnInit {
   onRequestSubmission() {
 
     this.authService.user.subscribe(currentUser => {
-      const routeRequest = {
+      const routeRequest: RouteRequest = {
         student: currentUser.uid,
         from: {
           description: this.fromLocation.description,
@@ -51,13 +52,28 @@ export class RequestCreatorComponent implements OnInit {
         },
         routeTime: this.rideRequestForm.controls.routeTime.value,
         repeat: this.rideRequestForm.controls.repeat.value,
-        repeatDays: {
-          mon: this.rideRequestForm.controls.selectMonday.value,
-          tue: this.rideRequestForm.controls.selectTuesday.value,
-          wed: this.rideRequestForm.controls.selectWednesday.value,
-          thu: this.rideRequestForm.controls.selectThursday.value,
-          fri: this.rideRequestForm.controls.selectFriday.value,
-        },
+        repeatDays: [
+          {
+            day: 'mon',
+            repeating: this.rideRequestForm.controls.selectMonday.value
+          },
+          {
+            day: 'tue',
+            repeating: this.rideRequestForm.controls.selectTuesday.value
+          },
+          {
+            day: 'wed',
+            repeating: this.rideRequestForm.controls.selectWednesday.value
+          },
+          {
+            day: 'thu',
+            repeating: this.rideRequestForm.controls.selectThursday.value
+          },
+          {
+            day: 'fri',
+            repeating: this.rideRequestForm.controls.selectFriday.value
+          },
+        ],
         returnRide: this.rideRequestForm.controls.returnRide.value,
         returnTime: this.rideRequestForm.controls.returnTime.value,
         numberOfSeats: this.rideRequestForm.controls.availableSeats.value,

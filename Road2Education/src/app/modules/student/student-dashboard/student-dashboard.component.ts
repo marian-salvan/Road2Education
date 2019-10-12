@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouteOffer } from 'src/app/models/route';
+import { RouteOffersService } from 'src/app/services/persistence/route-offers.service';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentDashboardComponent implements OnInit {
 
-  constructor() { }
+  offers: RouteOffer[];
+
+  constructor(private offersService: RouteOffersService) {
+    this.offers = [];
+   }
 
   ngOnInit() {
+    this.offersService.getAllOffers().subscribe(offers => this.offers = offers);
   }
 
 }

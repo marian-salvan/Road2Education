@@ -1,3 +1,7 @@
 <p>driver-dashboard works!</p>
 
+<div *ngFor='let request of requests'>
+    <app-request-view [routeRequest]="request"></app-request-view>
+</div>
+
 <a [routerLink]="['offers/new']"> Creeaza o oferta noua </a>
