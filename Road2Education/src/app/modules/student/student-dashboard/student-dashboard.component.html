@@ -1,7 +1,8 @@
-<p>student-dashboard works!</p>
+<a [routerLink]="['requests/new']"> Creează o nouă cerere </a>
 
-<div *ngFor='let offer of offers'>
-    <app-offer-view [routeOffer]="offer"></app-offer-view>
+<div class="row mb-4">
+    <div class="col-md-4" *ngFor='let offer of offers'>
+        <app-offer-view [routeOffer]="offer"></app-offer-view>
+    </div>
 </div>
 
-<a [routerLink]="['requests/new']"> Creează o nouă cerere </a>

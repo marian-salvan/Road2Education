@@ -14,6 +14,8 @@ import { UserService } from 'src/app/services/user/user.service';
 import { RouterModule } from '@angular/router';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { VerifyComponent } from './verify/verify.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { BaseComponentsModule } from '../base-components/base-components.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { VerifyComponent } from './verify/verify.component';
     RouterModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
-    AngularFirestoreModule,
+    AngularFirestoreModule, 
+    BaseComponentsModule,
 
     MatFormFieldModule,
     MatSelectModule,

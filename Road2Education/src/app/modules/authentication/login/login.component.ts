@@ -7,6 +7,8 @@ import { User, BaseUser } from 'src/app/models/users';
 import { Roles } from 'src/app/shared/constants/roles';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ErrorModalComponent } from '../../base-components/error-modal/error-modal.component';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private _authService: AuthenticationService, 
               private _userService: UserService,
+              private _modalService: NgbModal,
               private _router: Router) { }
 
   ngOnInit() {
@@ -47,7 +50,11 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['/verify']);
       }
     } catch(error) {
-      console.log(error);
+      const modalRef = this._modalService.open(ErrorModalComponent);
+      modalRef.componentInstance.title = 'Adresă de email/parolă greșită';
+      modalRef.componentInstance.message = `Adresă de email instrodusă sau parolă 
+                                            introdusă este greșită!`;
+      this.loginForm.reset(); 
     }
   }
 

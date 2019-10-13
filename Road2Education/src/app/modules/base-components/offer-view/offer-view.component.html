@@ -1,15 +1,84 @@
-<div class="dummy-holder">
-    <div class="dummy-left">
-        <p>{{ routeOffer.from.description }}</p>
-        <p>{{ routeOffer.to.description }}</p>
-        <p>{{ routeOffer.repeat }}</p>
-        <p>{{ routeOffer.routeDate }}</p>
-        <p>{{ routeOffer.routeTime }}</p>
-        <p>{{ routeOffer.numberOfSeats }}</p>
-        <p>{{ routeOffer.details }}</p>
-    </div>
-
-    <div class="dummy-right">
-        <p *ngFor="let repeatingDay of routeOffer.repeatDays">{{repeatingDay.day}} -> {{repeatingDay.repeating}}</p>
-    </div>
-</div>
+<mat-card class="container-fluid">
+    <mat-card-title>
+        <div class="row justify-content-center m-2">
+            <div class="col-6">
+                <span class="form-title"> Șofer: </span>    
+            </div>
+            <div class="col-6">
+                <span *ngIf="offerPoster !== undefined"> {{ offerPoster.firstName }} {{offerPoster.lastName}} </span>
+            </div>
+        </div>
+    </mat-card-title>
+    <mat-card-content>
+        <div class="row justify-content-center m-2">
+            <div class="col-6">
+                <span class="form-title"> Adresă de preluare: </span>    
+            </div>
+            <div class="col-6"> 
+                <span> {{ routeOffer.from.description }} </span>
+            </div>
+         </div>
+         <div class="row justify-content-center m-2">
+            <div class="col-6">
+                <span class="form-title"> Destinație: </span>
+            </div>
+            <div class="col-6"> 
+                <span> {{ routeOffer.to.description }} </span>
+            </div>
+        </div>
+        <div class="row justify-content-center m-2">
+            <div class="col-6">
+                <span class="form-title"> Data de început: </span>
+            </div> 
+            <div class="col-6">
+                <span> {{ routeOffer.routeDate.toDate() | date: 'dd/MM/yyyy'}} </span>          
+            </div>
+        </div>
+        <div class="row justify-content-center m-2">
+            <div class="col-6">
+                <span class="form-title"> Ora plecării: </span>
+            </div>
+            <div class="col-6">
+                <span> {{ routeOffer.routeTime }} </span>
+            </div>
+        </div>
+        <div *ngIf="routeOffer.repeat" class="row justify-content-center m-2">
+            <div class="col-6">
+                <span class="form-title"> Cursa curentă disponibilă: </span>
+            </div>
+            <div class="col-6">
+                <div class="row" >
+                    <div class="col-2" *ngFor="let repeatingDay of routeOffer.repeatDays">
+                        <span> {{repeatingDay.day}} </span>
+                        <mat-checkbox [(ngModel)]="repeatingDay.repeating" 
+                                      [disabled]="true">
+                        </mat-checkbox>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        <div class="row justify-content-center m-2">
+            <div class="col-6">
+                <span class="form-title"> Număr de locuri: </span>
+            </div>
+            <div class="col-6">
+                <span> {{ routeOffer.numberOfSeats }} </span>
+            </div>
+        </div>
+        <div class="row justify-content-center m-2">
+            <div class="col-6">
+                <span class="form-title"> Detalii cursă: </span>
+            </div>
+            <div class="col-6">
+                <span> {{ routeOffer.details }} </span>      
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-footer>
+        <div class="row">
+            <div class="col-12 text-center center-block mb-2"> 
+                <button type="submit" class="full-button btn btn-primary" (click)="openUserInformationDialog()">Contactează șoferul</button>
+            </div>
+        </div>
+    </mat-card-footer>
+</mat-card>

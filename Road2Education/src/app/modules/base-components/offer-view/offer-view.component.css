@@ -1,15 +1,3 @@
-.dummy-holder {
-    border: 3px black;
-    border-style: solid;
-    margin: 10px;
-    width: 100%;
-    display: inline-block;
-}
-
-.dummy-left {
-    float: left;
-}
-
-.dummy-right {
-    float: right;
+.offer-card {
+    max-width: 800px;
 }

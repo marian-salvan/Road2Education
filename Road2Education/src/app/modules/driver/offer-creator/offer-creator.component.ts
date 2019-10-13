@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PersistenceService } from 'src/app/services/persistence/persistence.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { RouteOffer } from 'src/app/models/route';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-offer-creator',
@@ -19,7 +20,9 @@ export class OfferCreatorComponent implements OnInit {
 
   rideOfferForm: FormGroup;
 
-  constructor(private persistenceService: PersistenceService, private authService: AuthenticationService) { }
+  constructor(private persistenceService: PersistenceService,
+              private authService: AuthenticationService,
+              private router: Router) { }
 
   ngOnInit() {
     this.rideOfferForm = new FormGroup({
@@ -36,7 +39,7 @@ export class OfferCreatorComponent implements OnInit {
     });
   }
 
-  onOfferSubmission() {
+  async onOfferSubmission() {
 
     this.authService.user.subscribe(currentUser => {
       const offer: RouteOffer = {
@@ -78,7 +81,9 @@ export class OfferCreatorComponent implements OnInit {
         details: this.rideOfferForm.controls.details.value,
       };
 
-      this.persistenceService.post('route-offers', offer);
+      this.persistenceService.post('route-offers', offer).then(_ => {
+        this.router.navigate(['/driver']);
+      });
     });
   }
 

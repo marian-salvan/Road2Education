@@ -10,6 +10,8 @@ import { REQUIRED_EMAIL, INVALID_EMAIL, REQUIRED_PASSWORD, INVALID_PASSWORD, REQ
 import { mustMatch } from 'src/app/shared/custom-validators/password-match';
 import { Roles } from 'src/app/shared/constants/roles';
 import { User } from 'src/app/models/users';
+import { ErrorModalComponent } from '../../base-components/error-modal/error-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-register',
@@ -25,6 +27,7 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private _authService: AuthenticationService, 
               private _userService: UserService,
+              private _modalService: NgbModal,
               private _router: Router) { }
 
   ngOnInit() {
@@ -59,8 +62,11 @@ export class RegisterComponent implements OnInit {
 
       this._router.navigate(['/verify']);
     } catch (error) {
-      console.log(error);  
-    }
+      const modalRef = this._modalService.open(ErrorModalComponent);
+      modalRef.componentInstance.title = 'A apărut o eroare';
+      modalRef.componentInstance.message = `A apărut o eroare neașteptată. 
+      Încearcă să te înregistrezi din nou.`;
+      this.registerForm.reset();     }
   }
 
   getFirstNameErrorMessage(): string {

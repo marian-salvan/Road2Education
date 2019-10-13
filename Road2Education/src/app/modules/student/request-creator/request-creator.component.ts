@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PersistenceService } from 'src/app/services/persistence/persistence.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { RouteRequest } from 'src/app/models/route';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-request-creator',
@@ -19,7 +20,9 @@ export class RequestCreatorComponent implements OnInit {
 
   rideRequestForm: FormGroup;
 
-  constructor(private persistenceService: PersistenceService, private authService: AuthenticationService) { }
+  constructor(private persistenceService: PersistenceService, 
+              private authService: AuthenticationService,
+              private router: Router) { }
 
   ngOnInit() {
     this.rideRequestForm = new FormGroup({
@@ -80,7 +83,9 @@ export class RequestCreatorComponent implements OnInit {
         details: this.rideRequestForm.controls.details.value,
       };
 
-      this.persistenceService.post('route-requests', routeRequest);
+      this.persistenceService.post('route-requests', routeRequest).then(_ => {
+        this.router.navigate(['/student']);
+      });
     });
   }
 

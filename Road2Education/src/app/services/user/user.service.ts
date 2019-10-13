@@ -21,7 +21,8 @@ export class UserService {
       firstName: user.firstName,
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
-      type: user.type
+      type: user.type,
+      email: user.email
     });
 
     return result;
