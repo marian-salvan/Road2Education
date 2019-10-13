@@ -1,3 +1,5 @@
+import { firestore } from 'firebase';
+
 export interface RoutePoint {
     description: string;
     place_id: string;
@@ -26,7 +28,7 @@ export interface BaseRoute {
 
 export interface RouteOffer extends BaseRoute {
     driver: string;
-    routeDate: Date;
+    routeDate: firestore.Timestamp;
 }
 
 export interface RouteRequest extends BaseRoute {

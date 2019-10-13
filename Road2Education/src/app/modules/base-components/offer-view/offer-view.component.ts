@@ -17,6 +17,7 @@ export class OfferViewComponent implements OnInit {
   @Input() routeOffer: RouteOffer;
 
   offerPoster: User;
+  dateTimestamp: number;
 
   constructor(public datepipe: DatePipe, 
               private modalService: NgbModal,
