@@ -1,21 +1,43 @@
-<mat-card class="form-card">
-    <mat-card-title>Formular validare</mat-card-title>
-    <mat-card-content>
-        <form [formGroup]="driverValidationForm" (ngSubmit)="onSubmitValidation()" class="sign-up-form">
+<div class="row my-4">
+        <div class="col-12">
+          <div class="text-center center-block">
+                <mat-card class="form-card">
+                        <mat-card-title class="form-title">Formular validare</mat-card-title>
+                        <mat-card-content>
+                            <form [formGroup]="driverValidationForm" (ngSubmit)="onSubmitValidation()" class="sign-up-form">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="text-center center-block">
+                                            <app-image-selector-field #drivingLicense 
+                                                buttonText="Încarcă imagine permis de conducere" 
+                                                formControlName="drivingLicense">
+                                            </app-image-selector-field>
+                                        </div>
+                                    </div>  
+                                </div>
+                               
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="text-center center-block">
+                                            <app-image-selector-field #driverPhoto 
+                                                buttonText="Încarcă imagine de profil"
+                                                formControlName="driverPhoto">
+                                            </app-image-selector-field>
+                                        </div>
+                                    </div>                                    
+                                </div>
             
-            <app-image-selector-field #drivingLicense 
-                class="form-field"
-                buttonText="Upload driving license" 
-                formControlName="drivingLicense">
-            </app-image-selector-field>
-            
-            <app-image-selector-field #driverPhoto 
-                class="form-field" 
-                buttonText="Upload your photo"
-                formControlName="driverPhoto">
-            </app-image-selector-field>
+                                <div class="row my-3">
+                                    <div class="col-12">
+                                        <div class="text-center center-block">
+                                            <button type="submit" class="full-button btn btn-primary" [disabled]="!driverValidationForm.valid">Finalizare</button>
+                                        </div>
+                                    </div>
+                                </div>                         
+                            </form>
+                        </mat-card-content>
+                </mat-card>
+          </div>
+    </div>
+</div>
 
-            <button mat-raised-button color="primary" [disabled]="!driverValidationForm.valid">Finalizare</button>
-        </form>
-    </mat-card-content>
-</mat-card>

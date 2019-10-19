@@ -16,4 +16,7 @@ export class VerifyComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToLogin() {
+    this._router.navigate(['/login']);
+  }
 }
