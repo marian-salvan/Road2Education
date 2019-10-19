@@ -1,4 +1,12 @@
-<div> 
-    <span style="padding-right: 10px;"> {{ verifyEmailText }}  </span>
-    <a [routerLink]="['/login']"> Go to login!</a>
+<div class="container-fluid message">
+    <div class="row align-items-center">
+        <div class="col text-center center-block">
+            <h5 class="form-title"> {{ verifyEmailText }}  </h5>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col text-center center-block mt-3">
+            <button class="full-button btn btn-primary" (click)="goToLogin()">Intră în cont</button>
+        </div>
+    </div> 
 </div>
