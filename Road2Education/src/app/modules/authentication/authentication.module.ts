@@ -5,7 +5,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
-import { MatInputModule, MatFormFieldModule, MatCardModule, MatButtonModule, MatSelectModule } from '@angular/material';
+import { MatInputModule, MatFormFieldModule, MatCardModule, MatButtonModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { RegisterComponent } from './register/register.component';
@@ -37,7 +37,8 @@ import { BaseComponentsModule } from '../base-components/base-components.module'
     MatSelectModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule, 
+    MatCheckboxModule
   ],
   providers: [
     AuthenticationService,

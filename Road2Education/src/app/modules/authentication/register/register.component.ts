@@ -16,16 +16,16 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css',
+      '../../../shared/styles/commons.css']
 })
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  userTypes = [Roles.Admin, Roles.Driver, Roles.Student];
-  defaultUserType = Roles.Admin;
+  userTypes = [Roles.Driver, Roles.Student];
 
   constructor(private formBuilder: FormBuilder,
-              private _authService: AuthenticationService, 
+              private _authService: AuthenticationService,
               private _userService: UserService,
               private _modalService: NgbModal,
               private _router: Router) { }
@@ -38,7 +38,9 @@ export class RegisterComponent implements OnInit {
       phoneNumber: new FormControl('', [Validators.required, Validators.pattern(PHONE_REGEX)]),
       password: new FormControl('', [Validators.required, Validators.pattern(PASSWORD_REGEX)]),
       confirmPassword: new FormControl('', [Validators.required]),
-      userType: new FormControl(Roles.Admin)
+      userType: new FormControl(Roles.Student),
+      termsAndConditions: new FormControl(false, [Validators.requiredTrue]),
+      gdprApprove: new FormControl(false, [Validators.requiredTrue])
     }, {
       validator: mustMatch('password', 'confirmPassword')
     });
@@ -46,7 +48,7 @@ export class RegisterComponent implements OnInit {
 
   async onRegister() {
     try {
-      let user: User = 
+      const user: User =
       { 
         uid: '',
         firstName: this.registerForm.value.firstName,

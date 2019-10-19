@@ -43,6 +43,14 @@
                       </mat-select>
                   </mat-form-field>
 
+                  <mat-checkbox required class="form-field form-checkbox" formControlName="termsAndConditions">
+                    Sunt de acord cu <a target="_blank" href="assets/files/Termeni si conditii.pdf">Termenii și condițiile</a>
+                  </mat-checkbox>
+
+                  <mat-checkbox required class="form-field form-checkbox" formControlName="gdprApprove">
+                    Sunt de acord cu <a target="_blank" href="assets/files/Politica de confidentialitate.pdf">Politica de confidențialitate</a>
+                  </mat-checkbox>
+
                   <button type="submit" class="full-button btn btn-primary" [disabled]="!registerForm.valid">Înregistrează-mă</button>
                 </form>
               </mat-card-content>

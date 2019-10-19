@@ -44,3 +44,7 @@
   border-radius: 20px;
   color: white;
 }
+
+.form-checkbox {
+  text-align: left !important;
+}
