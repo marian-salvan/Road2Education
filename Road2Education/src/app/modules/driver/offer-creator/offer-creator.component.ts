@@ -57,23 +57,23 @@ export class OfferCreatorComponent implements OnInit {
         repeat: this.rideOfferForm.controls.repeat.value,
         repeatDays: [
           {
-            day: 'mon',
+            day: 'lu',
             repeating: this.rideOfferForm.controls.selectMonday.value
           },
           {
-            day: 'tue',
+            day: 'mar',
             repeating: this.rideOfferForm.controls.selectTuesday.value
           },
           {
-            day: 'wed',
+            day: 'mie',
             repeating: this.rideOfferForm.controls.selectWednesday.value
           },
           {
-            day: 'thu',
+            day: 'joi',
             repeating: this.rideOfferForm.controls.selectThursday.value
           },
           {
-            day: 'fri',
+            day: 'vin',
             repeating: this.rideOfferForm.controls.selectFriday.value
           },
         ],

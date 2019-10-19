@@ -12,7 +12,7 @@ import { FACEBOOK_LINK, INSTAGRAM_LINK, YOUTUBE_LINK } from 'src/app/shared/cons
 })
 export class MainPageComponent implements OnInit {
 
-  currentUser: Observable<User>;
+  currentUser: User;
   currentYear: number;
   title: string = "Road to education";
 
@@ -25,15 +25,19 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.currentYear = new Date().getFullYear();
+    this.getLoggedInUser();
   }
 
-  getLoggedInUser(): Observable<User> {
-    return this._authService.user;
+  getLoggedInUser() {
+    this._authService.user.subscribe(user => {
+      this.currentUser = user;
+    })
   }
 
   async logOut() {
     try {
       await this._authService.logOut();
+      this.currentUser = null;
       this._router.navigate(['/login']);
     } catch(error) {
       console.log(error);
@@ -45,9 +49,15 @@ export class MainPageComponent implements OnInit {
   }
 
   goToProfile() {
-    this._authService.user.subscribe(currentUser => {
-      this._router.navigate([`/${currentUser.type}`]);
-    });
+    this._router.navigate([`/${this.currentUser.type}`]);
+  }
+
+  goToNewOffer() {
+    this._router.navigate(["/driver/offers/new"]);
+  }
+  
+  goToNewRequest() {
+    this._router.navigate(["/student/requests/new"]);
   }
 
   redirectToFacebookPage() {
@@ -56,7 +66,6 @@ export class MainPageComponent implements OnInit {
 
   redirectToInstagramPage() {
     window.open(this.instagramLink, "_blank");
-
   }
   
   redirectToYoutubePage() {

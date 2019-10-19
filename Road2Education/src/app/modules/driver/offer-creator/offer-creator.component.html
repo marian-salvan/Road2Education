@@ -19,11 +19,11 @@
                         <mat-checkbox class="form-field" formControlName="repeat">Repetă</mat-checkbox>
             
                         <section  [hidden]="!rideOfferForm.controls['repeat'].value">
-                            <mat-checkbox class="inline-checkbox" formControlName="selectMonday">Mon</mat-checkbox>
-                            <mat-checkbox class="inline-checkbox" formControlName="selectTuesday">Tue</mat-checkbox>
-                            <mat-checkbox class="inline-checkbox" formControlName="selectWednesday">Wed</mat-checkbox>
-                            <mat-checkbox class="inline-checkbox" formControlName="selectThursday">Thu</mat-checkbox>
-                            <mat-checkbox class="inline-checkbox" formControlName="selectFriday">Fri</mat-checkbox>
+                            <mat-checkbox class="inline-checkbox" formControlName="selectMonday">Lu</mat-checkbox>
+                            <mat-checkbox class="inline-checkbox" formControlName="selectTuesday">Mar</mat-checkbox>
+                            <mat-checkbox class="inline-checkbox" formControlName="selectWednesday">Mie</mat-checkbox>
+                            <mat-checkbox class="inline-checkbox" formControlName="selectThursday">Joi</mat-checkbox>
+                            <mat-checkbox class="inline-checkbox" formControlName="selectFriday">Vin</mat-checkbox>
                         </section>
             
                         <mat-form-field class="form-field">
@@ -31,7 +31,7 @@
                         </mat-form-field>
             
                         <mat-form-field class="form-field" appearance="outline">
-                            <mat-label>Details</mat-label>
+                            <mat-label>Detalii</mat-label>
                             <textarea matInput matTextareaAutosize matAutosizeMinRows=3 matAutosizeMaxRows=8 formControlName="details"></textarea>
                         </mat-form-field>
             

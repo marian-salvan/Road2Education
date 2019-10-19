@@ -29,21 +29,27 @@
                    
                     <div class="col-lg-4">
                         <ul class="navbar-nav">
-                            <li *ngIf="getLoggedInUser() | async" class="nav-item dropdown">
+                            <li *ngIf="currentUser !== null && currentUser !== undefined" class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-user"></i>
-                                    {{ (getLoggedInUser() | async).firstName }} {{ (getLoggedInUser() | async).lastName }}
+                                    {{ currentUser.firstName }} {{ currentUser.lastName }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <span class="dropdown-item" (click)="goToProfile()">Profil</span>
+                                    <span *ngIf="currentUser.type === 'driver'" class="dropdown-item" (click)="goToNewOffer()">
+                                        Ofertă nouă
+                                    </span>
+                                    <span *ngIf="currentUser.type === 'student'" class="dropdown-item" (click)="goToNewRequest()">
+                                        Cerere nouă
+                                    </span>
                                     <div class="dropdown-divider"></div>
                                     <span class="dropdown-item" (click)="logOut()">Deconectează-te</span>
                                 </div>
                             </li>
-                            <li *ngIf="(getLoggedInUser() | async) === null" class="nav-item">
+                            <li *ngIf="currentUser === null || currentUser === undefined" class="nav-item">
                                 <a class="nav-link custom-link" [routerLink]="['/login']">Intră în cont</a>
                             </li>
-                            <li *ngIf="(getLoggedInUser() | async) === null" class="nav-item">
+                            <li *ngIf="currentUser === null || currentUser === undefined" class="nav-item">
                                 <button class="full-button btn btn-primary" (click)="redirectToRegister()">Crează Cont</button>
                             </li>       
                         </ul>

@@ -57,23 +57,23 @@ export class RequestCreatorComponent implements OnInit {
         repeat: this.rideRequestForm.controls.repeat.value,
         repeatDays: [
           {
-            day: 'mon',
+            day: 'lu',
             repeating: this.rideRequestForm.controls.selectMonday.value
           },
           {
-            day: 'tue',
+            day: 'mar',
             repeating: this.rideRequestForm.controls.selectTuesday.value
           },
           {
-            day: 'wed',
+            day: 'mie',
             repeating: this.rideRequestForm.controls.selectWednesday.value
           },
           {
-            day: 'thu',
+            day: 'joi',
             repeating: this.rideRequestForm.controls.selectThursday.value
           },
           {
-            day: 'fri',
+            day: 'vin',
             repeating: this.rideRequestForm.controls.selectFriday.value
           },
         ],

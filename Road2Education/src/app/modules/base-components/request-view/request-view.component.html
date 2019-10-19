@@ -1,1 +1,87 @@
-<p>request-view works!</p>
+<mat-card class="container-fluid">
+        <mat-card-title>
+            <div class="row justify-content-center m-2">
+                <div class="col-6">
+                    <span class="form-title"> Elev: </span>    
+                </div>
+                <div class="col-6">
+                    <span *ngIf="requestPoster !== undefined"> {{ requestPoster.firstName }} {{requestPoster.lastName}} </span>
+                </div>
+            </div>
+        </mat-card-title>
+        <mat-card-content>
+            <div class="row justify-content-center m-2">
+                <div class="col-6">
+                    <span class="form-title"> Adresă de preluare: </span>    
+                </div>
+                <div class="col-6"> 
+                    <span> {{ routeRequest.from.description }} </span>
+                </div>
+             </div>
+             <div class="row justify-content-center m-2">
+                <div class="col-6">
+                    <span class="form-title"> Destinație: </span>
+                </div>
+                <div class="col-6"> 
+                    <span> {{ routeRequest.to.description }} </span>
+                </div>
+            </div>
+            <div class="row justify-content-center m-2">
+                <div class="col-6">
+                    <span class="form-title"> Ora plecării: </span>
+                </div>
+                <div class="col-6">
+                    <span> {{ routeRequest.routeTime }} </span>
+                </div>
+            </div>
+            <div *ngIf="routeRequest.returnRide" class="row justify-content-center m-2">
+                <div class="col-6">
+                    <span class="form-title">Ora de întoarcere:</span>
+                </div>
+                <div class="col-6">
+                    <span> {{routeRequest.returnTime}} </span>
+                </div>
+            </div>
+            <div *ngIf="routeRequest.repeat" class="row justify-content-center m-2">
+                <div class="col-6">
+                    <span class="form-title"> Cursă necesară: </span>
+                </div>
+                <div class="col-6">
+                    <div class="row" >
+                        <div class="col-2" *ngFor="let repeatingDay of routeRequest.repeatDays">
+                            <span> {{repeatingDay.day}} </span>
+                            <mat-checkbox [(ngModel)]="repeatingDay.repeating" 
+                                          [disabled]="true">
+                            </mat-checkbox>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+           
+            <div class="row justify-content-center m-2">
+                <div class="col-6">
+                    <span class="form-title"> Număr de locuri: </span>
+                </div>
+                <div class="col-6">
+                    <span> {{ routeRequest.numberOfSeats }} </span>
+                </div>
+            </div>
+            <div class="row justify-content-center m-2">
+                <div class="col-6">
+                    <span class="form-title"> Detalii cerere: </span>
+                </div>
+                <div class="col-6">
+                    <span> {{ routeRequest.details }} </span>      
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-footer>
+            <div class="row">
+                <div class="col-12 text-center center-block mb-2"> 
+                    <button type="submit" class="full-button btn btn-primary" (click)="openUserInformationDialog()">
+                        Contactează elevul
+                    </button>
+                </div>
+            </div>
+        </mat-card-footer>
+    </mat-card>
