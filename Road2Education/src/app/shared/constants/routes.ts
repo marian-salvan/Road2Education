@@ -20,6 +20,7 @@ import { RequestCreatorComponent } from 'src/app/modules/student/request-creator
 import { ActivityPageComponent } from 'src/app/main-components/activity-page/activity-page.component';
 import { TeamPageComponent} from 'src/app/main-components/team-page/team-page.component';
 import { ContactPageComponent } from 'src/app/main-components/contact-page/contact-page.component';
+import { TutorialPageComponent } from 'src/app/main-components/tutorial-page/tutorial-page.component';
 
 export const ROUTES: Routes = [
   { path: '', component: MainDashboardComponent },
@@ -31,6 +32,7 @@ export const ROUTES: Routes = [
   { path: 'activity', component: ActivityPageComponent },
   { path: 'team', component: TeamPageComponent},
   { path: 'contact', component: ContactPageComponent},
+  { path: 'tutorial', component: TutorialPageComponent},
   {
     path: 'account/pending',
     component: PendingAccountComponent,
