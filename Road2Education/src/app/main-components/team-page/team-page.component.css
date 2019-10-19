@@ -1,0 +1,32 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 1em;
+}
+  
+.container {
+    padding: 0 16px;
+}
+  
+.container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+  
+.title {
+    color: grey;
+}
+
+.member-name {
+    color: rgb(130, 48, 249);
+    font-size: 18pt;
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+
+.member-photo {
+    width: auto;
+    height: 12em;
+    object-fit: cover;
+    object-position: top;
+}
