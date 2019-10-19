@@ -12,3 +12,25 @@
 .arrow {
     width: 8%;
 }
+
+ol, ol li { margin-left: 0; padding-left: 0; }
+ol { margin-left: 1.3em; }
+
+.quote-block {
+    background-color: #8230f9;
+    height: 10em;
+    padding: .5em;
+    margin-bottom: 1em;
+}
+
+.quote-text {
+    font-style: italic;
+    color: whitesmoke;
+}
+
+.quote-author {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    font-weight: bold;
+}

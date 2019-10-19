@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
         type: this.registerForm.value.userType,
         validated: false
       };
-      
+
       await this._authService.emailRegister(user);
 
       this._router.navigate(['/verify']);

@@ -18,6 +18,9 @@ import { AuthenticationModule } from './modules/authentication/authentication.mo
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { SafePipe } from './shared/pipes/safe.pipe';
 import { PendingAccountComponent } from './main-components/pending-account/pending-account.component';
+import { ActivityPageComponent } from './main-components/activity-page/activity-page.component';
+import { TeamPageComponent } from './main-components/team-page/team-page.component';
+import { ContactPageComponent } from './main-components/contact-page/contact-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { PendingAccountComponent } from './main-components/pending-account/pendi
     MainDashboardComponent,
     SafePipe,
     PendingAccountComponent,
+    ActivityPageComponent,
+    TeamPageComponent,
+    ContactPageComponent,
   ],
   imports: [
     BrowserModule,

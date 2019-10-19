@@ -48,3 +48,11 @@
 .form-checkbox {
   text-align: left !important;
 }
+
+.colored-text {
+  color: var(--color-3);
+}
+
+.arrow {
+  width: 8%;
+}
