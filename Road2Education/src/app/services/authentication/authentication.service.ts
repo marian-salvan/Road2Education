@@ -48,8 +48,16 @@ export class AuthenticationService {
 
   public async emailRegister(user: User): Promise<firebase.auth.UserCredential> {
     try {
-      let userCredential = await this._afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
-   
+      const userCredential = await this._afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
+          .then(result => {
+            result.user.updateProfile({
+              displayName: user.firstName
+            });
+
+            return result;
+          });
+
+
       await this._afAuth.auth.currentUser.sendEmailVerification();
       await this._userService.addUser(userCredential.user.uid, user);
 
