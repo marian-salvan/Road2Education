@@ -1,7 +1,13 @@
-<p>driver-dashboard works!</p>
-
-<div *ngFor='let request of requests'>
-    <app-request-view [routeRequest]="request"></app-request-view>
+<div class="row my-2 mx-1">
+    <h3>Cereri de Curse</h3>
 </div>
-
-<a [routerLink]="['offers/new']"> Creeaza o oferta noua </a>
+    
+<div class="row mb-2 mx-1">
+    <a [routerLink]="['offers/new']"> Creează o nouă ofertă </a>
+</div>
+    
+<div class="row mb-4">
+    <div class="col-md-4" *ngFor='let request of requests'>
+        <app-request-view [routeRequest]="request"></app-request-view>
+    </div>
+</div>
