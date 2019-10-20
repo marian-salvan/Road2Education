@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { FileUploadService } from '../uploads/upload.service';
-import { StudentValidationRequest } from 'src/app/models/validation-request';
+import { StudentValidationRequest, StudentSubmittedValidationRequest, ValidationRequestStatus } from 'src/app/models/validation-request';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { User } from 'src/app/models/users';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { Roles } from 'src/app/shared/constants/roles';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,17 @@ export class StudentValidationService {
                 user_type: currentUser.type,
                 gradebookId,
                 school: request.school,
-                class: request.class
+                class: request.class,
+                status: ValidationRequestStatus.Pending
             });
         });
+    }
+
+    retrievePendingRequests(): Observable<StudentSubmittedValidationRequest[]> {
+        const studentValidationRequests = this.firestore
+            .collection<StudentSubmittedValidationRequest>(`validation-requests`,
+                ref => ref.where('user_type', '==', Roles.Student)
+                        .where('status', '==', ValidationRequestStatus.Pending));
+        return studentValidationRequests.valueChanges();
     }
 }

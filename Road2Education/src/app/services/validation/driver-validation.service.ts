@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
 import { FileUploadService } from '../uploads/upload.service';
-import { DriverValidationRequest } from 'src/app/models/validation-request';
+import { DriverValidationRequest, DriverSubmittedValidationRequest, ValidationRequestStatus } from 'src/app/models/validation-request';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { User } from 'src/app/models/users';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { Roles } from 'src/app/shared/constants/roles';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,17 @@ export class DriverValidationService {
                 user_type: currentUser.type,
                 driverPhotoId,
                 drivingLicenseId,
+                status: ValidationRequestStatus.Pending
             });
         });
     }
+
+    retrievePendingRequests(): Observable<DriverSubmittedValidationRequest[]> {
+        const driversValidationRequests = this.firestore
+            .collection<DriverSubmittedValidationRequest>(`validation-requests`,
+                ref => ref.where('user_type', '==', Roles.Driver)
+                .where('status', '==', ValidationRequestStatus.Pending));
+        return driversValidationRequests.valueChanges();
+    }
+
 }

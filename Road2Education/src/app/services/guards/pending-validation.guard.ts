@@ -4,6 +4,7 @@ import { Observable, of} from 'rxjs/';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { take, tap, map, filter, flatMap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ValidationRequestStatus } from 'src/app/models/validation-request';
 
 abstract class AbstractPendingValidationGuard implements CanActivate {
   constructor(
@@ -23,7 +24,9 @@ abstract class AbstractPendingValidationGuard implements CanActivate {
             .get().pipe(
                 take(1),
                 map(querySnapshot => {
-                    return querySnapshot.docs.length !== 0;
+                    return querySnapshot.docs
+                        .map(doc => doc.get('status') === ValidationRequestStatus.Pending)
+                        .reduce((sum, next) => sum || next, false);
                 }));
       }),
       flatMap(result => result)

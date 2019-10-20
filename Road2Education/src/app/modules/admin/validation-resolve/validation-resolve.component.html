@@ -1,0 +1,26 @@
+<div class="row validation-container">
+    <div class="col-md-6">
+        <div *ngIf="isDriver()">
+            <app-driver-validation-view [request]="request"></app-driver-validation-view>
+        </div>
+
+        <div *ngIf="isStudent()">
+            <app-student-validation-view [request]="request"></app-student-validation-view>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <p class="info-line">{{ userEmail }}</p>
+        <p class="info-line">{{ userPhone }}</p>
+    </div>
+
+    <div class="col-md-3">
+        <div class="row">
+            <button class="needs-space full-button btn btn-primary mr-4" (click)="onAccept()">Acceptă</button>
+        </div>
+
+        <div class="row">
+            <button class="needs-space transparent-button btn btn-primary mr-4" (click)="onRefuse()">Refuză</button>
+        </div>
+    </div>
+</div>

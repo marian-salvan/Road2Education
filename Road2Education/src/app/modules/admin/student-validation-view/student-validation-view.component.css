@@ -1,0 +1,8 @@
+.contained-image {
+    width: 100%;
+    height: auto;
+    max-height: 15em;
+    object-fit: contain;
+    object-position: center;
+    margin-bottom: 0.5em;
+}

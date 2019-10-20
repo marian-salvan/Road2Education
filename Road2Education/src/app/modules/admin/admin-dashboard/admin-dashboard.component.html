@@ -1,1 +1,7 @@
-<p>admin-dashboard works!</p>
+<div *ngFor='let request of driverPendingRequests'>
+    <app-validation-resolve [request]="request"></app-validation-resolve>
+</div>
+
+<div *ngFor='let request of studentPendingRequests'>
+    <app-validation-resolve [request]="request"></app-validation-resolve>
+</div>
