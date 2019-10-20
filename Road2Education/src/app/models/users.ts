@@ -10,4 +10,5 @@ export interface User extends BaseUser {
     phoneNumber: string;
     type: string;
     validated: boolean;
+    emailVerified?: boolean;
 }

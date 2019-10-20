@@ -45,3 +45,7 @@
 .custom-link {
     text-decoration: underline;
 }
+
+li > span.nav-link {
+    cursor: pointer;
+}
