@@ -22,7 +22,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  userTypes = [Roles.Driver, Roles.Student];
+  userTypes = ["șofer", "elev"];
 
   constructor(private formBuilder: FormBuilder,
               private _authService: AuthenticationService,
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
       phoneNumber: new FormControl('', [Validators.required, Validators.pattern(PHONE_REGEX)]),
       password: new FormControl('', [Validators.required, Validators.pattern(PASSWORD_REGEX)]),
       confirmPassword: new FormControl('', [Validators.required]),
-      userType: new FormControl(Roles.Student),
+      userType: new FormControl(this.userTypes[0]),
       termsAndConditions: new FormControl(false, [Validators.requiredTrue]),
       gdprApprove: new FormControl(false, [Validators.requiredTrue])
     }, {
@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
         phoneNumber: this.registerForm.value.phoneNumber,
         email: this.registerForm.value.email,
         password: this.registerForm.value.password,
-        type: this.registerForm.value.userType,
+        type: this.translate(this.registerForm.value.userType),
         validated: false
       };
 
@@ -99,20 +99,24 @@ export class RegisterComponent implements OnInit {
            this.registerForm.controls['confirmPassword'].hasError('mustMatch') ? INVALID_CONFIRM_PASSWORD : '';
   }
 
-  routeToAccount(type: string) {
-    switch (type) {
-      case Roles.Admin:
-        this._router.navigate(['/admin']);
+  private translate(option: string) : string {
+    let response = '';
+    option = option.toLowerCase();
+
+    switch (option) {
+      case "admin":
+        response = Roles.Admin;
         break;
-      case Roles.Driver:
-        this._router.navigate(['/driver']);
+      case "șofer":
+        response =  Roles.Driver;
         break;
-      case Roles.Student:
-        this._router.navigate(['/student']);
-        break;      
+      case "elev":
+        response =  Roles.Student;
+        break;
       default:
-        this._router.navigate(['']);
-        break;
+        response =  '';    
     }
+    
+    return response;
   }
 }

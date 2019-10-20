@@ -29,7 +29,7 @@ export class AuthenticationService {
           return of(null);
         }
       })
-    )
+    );
   }
 
   public async emailLogin(user: BaseUser): Promise<firebase.auth.UserCredential> {
@@ -48,16 +48,7 @@ export class AuthenticationService {
 
   public async emailRegister(user: User): Promise<firebase.auth.UserCredential> {
     try {
-      const userCredential = await this._afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
-          .then(result => {
-            result.user.updateProfile({
-              displayName: user.firstName
-            });
-
-            return result;
-          });
-
-
+      const userCredential = await this._afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
       await this._afAuth.auth.currentUser.sendEmailVerification();
       await this._userService.addUser(userCredential.user.uid, user);
 
@@ -81,5 +72,9 @@ export class AuthenticationService {
     } catch (error) {
       console.log(error);     
     }
+  }
+
+  public isEmailValid(): boolean {
+    return this._afAuth.auth.currentUser.emailVerified;
   }
 }

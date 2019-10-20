@@ -24,12 +24,14 @@ export class UserValidatedGuard implements CanActivate {
           return of(true);
         }
 
-        return of(user !== null && user.validated);
+        return of(user !== null && user.validated );
       }),
       flatMap(result => result),
       tap(isValidated => {
-        if (!isValidated) {
+        if (!isValidated && this.auth.isEmailValid()) {
           this.router.navigate([validationPath]);
+        } else if (!this.auth.isEmailValid()) {
+          this.router.navigate(['/verify']);
         }
       })
     );
