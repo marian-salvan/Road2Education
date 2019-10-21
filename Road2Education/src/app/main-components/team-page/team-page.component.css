@@ -1,6 +1,12 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin-bottom: 1em;
+    margin-top: 1em;
+    height: 100%;
+}
+
+.card-container {
+    padding-bottom: 1em;
 }
   
 .container {
