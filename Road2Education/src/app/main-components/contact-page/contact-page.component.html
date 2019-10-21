@@ -1,20 +1,20 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-        <div class="text-center center-block"> 
-            <h1 class="d-inline colored-text">Contactează-ne!</h1> 
+        <div class="text-center center-block">
+            <h1 class="d-inline colored-text">Contactează-ne!</h1>
         </div>
 
         <div class="text-center center-block">
             <img class="arrow" src="assets/images/home_arrow.png">
         </div>
 
-    </div>    
+    </div>
     <div class="col-md-1"></div>
 </div>
 
 <div class="row centered-container">
-    <div class="text-center center-block">
+    <div class="center-block">
         <p>Scrie-ne dacă vrei să afli mai mult despre noi, dacă ne poți ajuta cu o recomandare sau dacă ești utilizator al platformei și dorești să lași un feedback.</p>
         <p>Pentru a ne lăsa un mesaj, poți folosi direct și formularul de mai jos.</p>
     </div>
@@ -26,33 +26,32 @@
             <mat-card class="register-card">
                 <mat-card-title class="form-title">Contactează-ne!</mat-card-title>
                 <mat-card-content>
-                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="register-form">
-                    <mat-form-field class="form-field">
-                        <input matInput placeholder="Nume" type="text" formControlName="name">
-                        <mat-error *ngIf="contactForm.controls['name'].invalid">Câmp obligatoriu</mat-error>
-                    </mat-form-field>
-          
-                    <mat-form-field class="form-field">
-                        <input matInput placeholder="Email" type="text" formControlName="email">
-                        <mat-error *ngIf="contactForm.controls['email'].invalid">Câmp obligatoriu</mat-error>
-                    </mat-form-field>
+                    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="register-form">
+                        <mat-form-field class="form-field">
+                            <input matInput placeholder="Nume" type="text" formControlName="name">
+                            <mat-error *ngIf="contactForm.controls['name'].invalid">Câmp obligatoriu</mat-error>
+                        </mat-form-field>
 
-                    
-                    <mat-form-field class="form-field">
-                        <input matInput placeholder="Subiect" type="text" formControlName="subject">
-                        <mat-error *ngIf="contactForm.controls['subject'].invalid">Câmp obligatoriu</mat-error>
-                    </mat-form-field>
-              
-                    <mat-form-field class="form-field" appearance="outline">
-                        <mat-label>Mesaj</mat-label>
-                        <textarea matInput matTextareaAutosize matAutosizeMinRows=10 matAutosizeMaxRows=16 formControlName="message"></textarea>
-                    </mat-form-field>
+                        <mat-form-field class="form-field">
+                            <input matInput placeholder="Email" type="text" formControlName="email">
+                            <mat-error *ngIf="contactForm.controls['email'].invalid">Câmp obligatoriu</mat-error>
+                        </mat-form-field>
 
-                    <button type="submit" class="full-button btn btn-primary" [disabled]="!contactForm.valid">Trimite</button>
-                </form>
+
+                        <mat-form-field class="form-field">
+                            <input matInput placeholder="Subiect" type="text" formControlName="subject">
+                            <mat-error *ngIf="contactForm.controls['subject'].invalid">Câmp obligatoriu</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Mesaj</mat-label>
+                            <textarea matInput matTextareaAutosize matAutosizeMinRows=10 matAutosizeMaxRows=16 formControlName="message"></textarea>
+                        </mat-form-field>
+
+                        <button type="submit" class="full-button btn btn-primary" [disabled]="!contactForm.valid">Trimite</button>
+                    </form>
                 </mat-card-content>
             </mat-card>
         </div>
     </div>
 </div>
-    
