@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/models/users';
 import { Router } from '@angular/router';
 import { FACEBOOK_LINK, INSTAGRAM_LINK, YOUTUBE_LINK } from 'src/app/shared/constants/urls';
+import { Roles } from 'src/app/shared/constants/roles';
 
 @Component({
   selector: 'app-main-page',
@@ -70,5 +71,17 @@ export class MainPageComponent implements OnInit {
   
   redirectToYoutubePage() {
     window.open(this.youtubeLink, "_blank");
+  }
+
+  isStudent(): boolean {
+    return this.currentUser !== undefined &&
+        this.currentUser !== null &&
+        this.currentUser.type === Roles.Student;
+  }
+
+  isDriver(): boolean {
+    return this.currentUser !== undefined &&
+        this.currentUser !== null &&
+        this.currentUser.type === Roles.Driver;
   }
 }

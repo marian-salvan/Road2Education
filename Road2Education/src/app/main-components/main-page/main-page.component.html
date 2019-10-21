@@ -1,8 +1,10 @@
 <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" [routerLink]="['']">
-                <img class="logo" src="assets/images/logo_100.png">
-                <span>{{ title }}</span>
+                <div style="margin-left: 15%;">
+                    <img class="logo" src="assets/images/logo_100.png">
+                    <span>{{ title }}</span>
+                </div>
             </a>
             
             <div class="container-fluid">          
@@ -19,8 +21,8 @@
                                 <a class="nav-link" routerLink="/activity">Ce facem?</a>
                             </li>
                             <li class="nav-item" *ngIf="currentUser !== null && currentUser !== undefined">
-                                    <span *ngIf="currentUser.type === 'driver'" class="nav-link" (click)="goToProfile()">Cereri de curse</span>
-                                    <span *ngIf="currentUser.type === 'student'" class="nav-link" (click)="goToProfile()">Oferte de curse</span>
+                                    <span *ngIf="isDriver()" class="nav-link" (click)="goToProfile()">Cereri de curse</span>
+                                    <span *ngIf="isStudent()" class="nav-link" (click)="goToProfile()">Oferte de curse</span>
                             </li>                         
                             <li class="nav-item" >
                                 <a class="nav-link" routerLink="/contact">Contact</a>
